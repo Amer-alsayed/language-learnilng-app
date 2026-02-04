@@ -10,7 +10,7 @@ jobs:
   quality-check:
     name: Lint, Typecheck & Test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 🛑 Checkout Code
         uses: actions/checkout@v4
