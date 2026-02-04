@@ -1,3 +1,3 @@
 unit_id,lesson_order,lesson_title,intro_video_url,passing_score,exercise_id,exercise_type,prompt,audio_url,options,correct_option_index,explanation,sentence_parts,correct_order,distractors,correct_answer,acceptable_answers,pairs,correct_transcript
-UNIT_ID_HERE,1,Greetings,,0.8,,multiple_choice,Choose the correct article for Hund,,Der Hund|Die Hund|Das Hund,0,Use Der for masculine nouns.,,,,,,,
-UNIT_ID_HERE,1,Greetings,,0.8,,word_bank,Build the sentence,,,,Ich|trinke|Wasser,0|1|2,heute,,,,
+UNIT_ID_HERE,1,Greetings,,0.8,,multiple_choice,Choose the correct article for Hund,,Der Hund|Die Hund|Das Hund,0,Use Der for masculine nouns,,,,,,,
+UNIT_ID_HERE,1,Greetings,,0.8,,word_bank,Build the sentence,,,,,Ich|trinke|Wasser,0|1|2,heute,,,,

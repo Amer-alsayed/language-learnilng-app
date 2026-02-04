@@ -254,15 +254,18 @@ async function main() {
     process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-  if (!supabaseUrl || !serviceRoleKey) {
+  if (!options.dryRun && (!supabaseUrl || !serviceRoleKey)) {
     throw new Error(
-      'Missing SUPABASE_URL (or NEXT_PUBLIC_SUPABASE_URL) or SUPABASE_SERVICE_ROLE_KEY'
+      'Missing SUPABASE_URL (or NEXT_PUBLIC_SUPABASE_URL) or SUPABASE_SERVICE_ROLE_KEY. Required for actual seeding.'
     )
   }
 
-  const client = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false },
-  })
+  const client =
+    supabaseUrl && serviceRoleKey
+      ? createClient(supabaseUrl, serviceRoleKey, {
+          auth: { persistSession: false },
+        })
+      : null
 
   const resolvedPath = path.resolve(process.cwd(), options.filePath)
   const csv = await fs.readFile(resolvedPath, 'utf8')
@@ -273,14 +276,17 @@ async function main() {
     trim: true,
   }) as CsvRow[]
 
-  if (rows.length === 0) {
-    throw new Error('CSV contains no rows')
+  if (!Array.isArray(rows) || rows.length === 0) {
+    throw new Error('CSV yielded no valid rows')
   }
 
   const units = new Map<string, Map<number, LessonSeed>>()
 
-  rows.forEach((row, index) => {
+  let index = 0
+  for (const row of rows) {
     const line = index + 2
+    index += 1
+
     const unitId = normalize(row.unit_id) || options.unitId
     if (!unitId) {
       throw new Error(`Line ${line}: missing unit_id or --unit flag`)
@@ -352,7 +358,7 @@ async function main() {
 
     const exercise = parseExercise(row, line)
     lesson.exercises.push(exercise)
-  })
+  }
 
   for (const [unitId, lessonMap] of units) {
     const items = Array.from(lessonMap.values())
@@ -368,14 +374,10 @@ async function main() {
         try {
           content = LessonContentSchema.parse(input)
         } catch (error) {
-          if (error instanceof ZodError) {
-            const details = error.issues
-              .map((issue) => `${issue.path.join('.')}: ${issue.message}`)
-              .join(' | ')
-            throw new Error(
-              `Lesson ${lesson.orderIndex} (${lesson.title}) failed validation: ${details}`
-            )
-          }
+          console.error(
+            `Validation failed for Lesson ${lesson.orderIndex} (${lesson.title}):`
+          )
+          console.error(error)
           throw error
         }
 
@@ -395,6 +397,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error instanceof Error ? error.message : error)
+  console.error(error)
   process.exitCode = 1
 })

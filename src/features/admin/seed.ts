@@ -17,7 +17,7 @@ interface SeedParams {
  * NOTE: This should only be run by admin users or via a protected server script.
  */
 export async function seedLessons(
-  client: SupabaseClient,
+  client: SupabaseClient | null,
   { unitId, items, dryRun = false }: SeedParams
 ) {
   console.log(
@@ -52,6 +52,10 @@ export async function seedLessons(
     order_index: item.orderIndex,
     content: item.content as unknown as Record<string, unknown>,
   }))
+
+  if (!client) {
+    throw new Error('Database client is not initialized')
+  }
 
   const { error } = await client
     .from('lessons')
