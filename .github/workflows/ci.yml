@@ -33,5 +33,9 @@ jobs:
       - name: 📐 Type Check (TypeScript)
         run: npx tsc --noEmit
 
+      - name: 🎭 Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
       - name: 🧪 Run Tests (Vitest)
         run: npm run test
+
