@@ -32,3 +32,6 @@ jobs:
 
       - name: 📐 Type Check (TypeScript)
         run: npx tsc --noEmit
+
+      - name: 🧪 Run Tests (Vitest)
+        run: npm run test
