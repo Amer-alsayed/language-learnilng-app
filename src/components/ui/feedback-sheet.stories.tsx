@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { FeedbackSheet } from './feedback-sheet'
-import { useState } from 'react'
+import { useState, type ComponentProps } from 'react'
 import { Button } from './button'
 
 const meta = {
@@ -14,8 +14,6 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-import type { ComponentProps } from 'react'
 
 type StoryProps = Partial<ComponentProps<typeof FeedbackSheet>>
 
@@ -41,7 +39,7 @@ export const CorrectResponse: Story = {
   args: {
     isCorrect: true,
     explanation:
-      "Correct! 'Mädchen' is neuter because all diminutives ending in -chen are neuter.",
+      "Correct! 'Maedchen' is neuter because all diminutives ending in -chen are neuter.",
     isOpen: false,
     onOpenChange: () => {},
     onNext: () => {},
@@ -52,9 +50,9 @@ export const WrongResponse: Story = {
   render: Template,
   args: {
     isCorrect: false,
-    correctAnswer: 'Das Mädchen',
+    correctAnswer: 'Das Maedchen',
     explanation:
-      "Remember: 'Mädchen' ends in -chen, so it is always Das (Neuter), not Die.",
+      "Remember: 'Maedchen' ends in -chen, so it is always Das (Neuter), not Die.",
     isOpen: false,
     onOpenChange: () => {},
     onNext: () => {},

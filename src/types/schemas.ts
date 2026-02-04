@@ -44,9 +44,19 @@ const BaseExerciseSchema = z.object({
  */
 export const MultipleChoiceSchema = BaseExerciseSchema.extend({
   type: z.literal('multiple_choice'),
-  options: z.array(z.string()).min(2, 'Must have at least 2 options'),
+  options: z
+    .array(z.string().min(1, 'Option cannot be empty'))
+    .min(2, 'Must have at least 2 options'),
   correctOptionIndex: z.number().int().min(0),
   explanation: z.string().optional(), // Shown in BottomSheet on failure
+}).superRefine((value, ctx) => {
+  if (value.correctOptionIndex >= value.options.length) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['correctOptionIndex'],
+      message: 'Correct option index is out of range',
+    })
+  }
 })
 
 /**
@@ -56,9 +66,42 @@ export const MultipleChoiceSchema = BaseExerciseSchema.extend({
  */
 export const WordBankSchema = BaseExerciseSchema.extend({
   type: z.literal('word_bank'),
-  sentenceParts: z.array(z.string()), // The master list of words
-  correctOrder: z.array(z.number()), // The indices that form the correct sentence
-  distractors: z.array(z.string()).optional(), // Extra words that don't fit
+  sentenceParts: z
+    .array(z.string().min(1, 'Sentence part cannot be empty'))
+    .min(2, 'Sentence must contain at least 2 parts'), // The master list of words
+  correctOrder: z.array(z.number().int().min(0)).min(1), // The indices that form the correct sentence
+  distractors: z
+    .array(z.string().min(1, 'Distractor cannot be empty'))
+    .optional(), // Extra words that don't fit
+}).superRefine((value, ctx) => {
+  const maxIndex = value.sentenceParts.length - 1
+  const seen = new Set<number>()
+
+  value.correctOrder.forEach((index, position) => {
+    if (index < 0 || index > maxIndex) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['correctOrder', position],
+        message: 'Correct order index is out of range',
+      })
+    }
+    if (seen.has(index)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['correctOrder', position],
+        message: 'Correct order cannot contain duplicate indices',
+      })
+    }
+    seen.add(index)
+  })
+
+  if (value.correctOrder.length !== value.sentenceParts.length) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['correctOrder'],
+      message: 'Correct order must include every sentence part exactly once',
+    })
+  }
 })
 
 /**
@@ -67,8 +110,10 @@ export const WordBankSchema = BaseExerciseSchema.extend({
  */
 export const TypingSchema = BaseExerciseSchema.extend({
   type: z.literal('typing'),
-  correctAnswer: z.string(), // The exact string to match
-  acceptableAnswers: z.array(z.string()).optional(), // Synonyms or slight variations
+  correctAnswer: z.string().min(1, 'Correct answer cannot be empty'), // The exact string to match
+  acceptableAnswers: z
+    .array(z.string().min(1, 'Acceptable answer cannot be empty'))
+    .optional(), // Synonyms or slight variations
 })
 
 // =============================================================================
@@ -84,8 +129,8 @@ export const MatchPairsSchema = BaseExerciseSchema.extend({
   pairs: z
     .array(
       z.object({
-        left: z.string(),
-        right: z.string(),
+        left: z.string().min(1, 'Left value cannot be empty'),
+        right: z.string().min(1, 'Right value cannot be empty'),
       })
     )
     .min(2, 'Must have at least 2 pairs'),
@@ -97,7 +142,7 @@ export const MatchPairsSchema = BaseExerciseSchema.extend({
  */
 export const ListeningSchema = BaseExerciseSchema.extend({
   type: z.literal('listening'),
-  correctTranscript: z.string(),
+  correctTranscript: z.string().min(1, 'Transcript cannot be empty'),
 })
 
 // =============================================================================
@@ -152,8 +197,9 @@ export interface Profile {
   xp: number
   streak: number
   last_active_at: string // ISO Date String
-  subscription_expires_at?: string // ISO Date String
+  expires_at?: string // ISO Date String
   created_at: string
+  updated_at: string
 }
 
 export interface Unit {
@@ -161,6 +207,8 @@ export interface Unit {
   order_index: number
   title: string
   description: string | null
+  created_at: string
+  updated_at: string
 }
 
 export interface Lesson {
@@ -169,6 +217,8 @@ export interface Lesson {
   order_index: number
   title: string
   content: LessonContent // The Strict JSON type
+  created_at: string
+  updated_at: string
 }
 
 export interface UserProgress {
@@ -176,4 +226,6 @@ export interface UserProgress {
   lesson_id: string
   status: 'locked' | 'active' | 'completed'
   stars: number
+  completed_at: string | null
+  updated_at: string
 }

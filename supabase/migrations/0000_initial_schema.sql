@@ -31,7 +31,7 @@ create table profiles (
   
   -- Audit & Subscriptions
   last_active_at timestamptz default now(),
-  subscription_expires_at timestamptz,
+  expires_at timestamptz,
   created_at timestamptz default now() not null,
   updated_at timestamptz default now() not null
 );
@@ -165,9 +165,25 @@ create or replace function complete_lesson(
 returns void as $$
 declare
   v_stars_earned integer;
+  v_previous_stars integer;
+  v_stars_delta integer;
 begin
+  if auth.uid() is null then
+    raise exception 'Not authenticated';
+  end if;
+
   -- Input Sanitization: Clamp stars between 0 and 3
   v_stars_earned := greatest(0, least(3, p_stars_earned));
+
+  select stars
+  into v_previous_stars
+  from user_progress
+  where user_id = auth.uid()
+    and lesson_id = p_lesson_id;
+
+  if v_previous_stars is null then
+    v_previous_stars := 0;
+  end if;
 
   -- 1. Upsert Progress
   insert into user_progress (user_id, lesson_id, status, stars, completed_at)
@@ -176,19 +192,30 @@ begin
   do update set 
     status = 'completed', 
     -- Only keep the high score
-    stars = greatest(user_progress.stars, excluded.stars),
+    stars = greatest(user_progress.stars, v_stars_earned),
     completed_at = now();
 
   -- 2. Award XP (Simple Logic: 10 XP per star)
-  -- In a real app, you might check if they already got XP for this lesson to prevent farming.
-  update profiles 
-  set xp = xp + (v_stars_earned * 10),
-      last_active_at = now()
-  where id = auth.uid();
+  -- Only award incremental XP to prevent farming.
+  v_stars_delta := greatest(v_stars_earned - v_previous_stars, 0);
+
+  if v_stars_delta > 0 then
+    update profiles
+    set xp = xp + (v_stars_delta * 10),
+        last_active_at = now()
+    where id = auth.uid();
+  else
+    update profiles
+    set last_active_at = now()
+    where id = auth.uid();
+  end if;
   
   
 end;
 $$ language plpgsql security definer set search_path = public;
+
+revoke all on function complete_lesson(uuid, integer) from public;
+grant execute on function complete_lesson(uuid, integer) to authenticated, service_role;
 
 -- -----------------------------------------------------------------------------
 -- 6. AUTHENTICATION TRIGGERS

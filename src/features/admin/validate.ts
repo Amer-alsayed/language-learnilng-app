@@ -1,4 +1,4 @@
-import { LessonContentSchema, type LessonContent } from '@/types/schemas'
+import { LessonContentSchema, type LessonContent } from '../../types/schemas'
 import { ZodError } from 'zod'
 
 /**
@@ -10,14 +10,14 @@ export function validateLessonContent(content: unknown): LessonContent {
     return LessonContentSchema.parse(content)
   } catch (error) {
     if (error instanceof ZodError) {
-      console.error('❌ Validation Failed:')
+      console.error('Validation failed:')
       error.issues.forEach((issue) => {
         console.error(
           ` - Path: ${issue.path.join('.')} | Message: ${issue.message}`
         )
       })
       throw new Error(
-        `Invalid Lesson Content: ${error.issues.length} errors found.`
+        `Invalid lesson content: ${error.issues.length} errors found.`
       )
     }
     throw error

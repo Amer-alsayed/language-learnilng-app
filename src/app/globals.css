@@ -12,8 +12,8 @@
   --color-feedback-warning: #f59e0b;
 
   /* Typography */
-  --font-heading: var(--font-nunito);
-  --font-body: var(--font-inter);
+  --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Standard UI Colors */
   --color-background: var(--background);

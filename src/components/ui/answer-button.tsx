@@ -16,10 +16,15 @@ export function AnswerButton({
   shortcut,
   className,
   children,
+  type,
+  disabled,
   ...props
 }: AnswerButtonProps) {
+  const isDisabled = disabled || state === 'correct' || state === 'wrong'
+
   return (
     <motion.button
+      type={type ?? 'button'}
       whileHover={
         state === 'idle'
           ? { scale: 1.02, backgroundColor: 'rgba(0,0,0,0.02)' }
@@ -27,7 +32,7 @@ export function AnswerButton({
       }
       whileTap={state === 'idle' ? { scale: 0.98 } : {}}
       className={cn(
-        'group focus-visible:ring-ring relative flex w-full items-center rounded-xl border-2 p-4 text-left font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+        'group focus-visible:ring-ring relative flex w-full items-center rounded-xl border-2 p-4 text-left font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60',
         // Idle State
         state === 'idle' &&
           'text-foreground border-zinc-200 bg-white hover:border-zinc-300',
@@ -39,7 +44,8 @@ export function AnswerButton({
         state === 'wrong' && 'border-red-500 bg-red-50 text-red-700',
         className
       )}
-      disabled={state === 'correct' || state === 'wrong'} // Disable interaction after judgement
+      disabled={isDisabled} // Disable interaction after judgement
+      aria-pressed={state === 'selected'}
       {...props}
     >
       {shortcut && (

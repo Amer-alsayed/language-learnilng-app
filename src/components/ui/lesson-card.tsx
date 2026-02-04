@@ -25,17 +25,20 @@ export function LessonCard({
   const isLocked = status === 'locked'
 
   return (
-    <motion.div
+    <motion.button
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       whileHover={!isLocked ? { scale: 1.02, y: -5 } : {}}
       whileTap={!isLocked ? { scale: 0.98 } : {}}
+      type="button"
       onClick={!isLocked ? onClick : undefined}
+      disabled={isLocked}
+      aria-disabled={isLocked}
       className={cn(
-        'relative w-full max-w-sm overflow-hidden rounded-2xl border-2 p-6 transition-all',
+        'focus-visible:ring-ring relative w-full max-w-sm overflow-hidden rounded-2xl border-2 p-6 text-left transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         status === 'locked' &&
-          'cursor-not-allowed border-zinc-200 bg-zinc-100 text-zinc-400',
+          'border-zinc-200 bg-zinc-100 text-zinc-400 disabled:cursor-not-allowed',
         status === 'active' &&
           'border-primary shadow-primary/10 cursor-pointer bg-white shadow-lg',
         status === 'completed' && 'cursor-pointer border-amber-200 bg-amber-50'
@@ -92,6 +95,6 @@ export function LessonCard({
           ))}
         </div>
       )}
-    </motion.div>
+    </motion.button>
   )
 }

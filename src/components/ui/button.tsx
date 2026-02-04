@@ -54,18 +54,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       leftIcon,
       rightIcon,
+      type,
+      disabled,
       ...props
     },
     ref
   ) => {
+    const isDisabled = isLoading || disabled
     return (
       <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         whileHover={{ scale: 1.02, filter: 'brightness(1.1)' }}
         whileTap={{ scale: 0.98 }}
-        disabled={isLoading || props.disabled}
-        type="button"
+        disabled={isDisabled}
+        type={type ?? 'button'}
+        aria-busy={isLoading || undefined}
+        aria-disabled={isDisabled || undefined}
         {...props}
       >
         {isLoading && (
