@@ -8,7 +8,7 @@ const withSerwist = withSerwistInit({
 })
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {}, // Silence Turbopack warning for webpack-based plugins like @serwist/next
 }
 
 export default withSerwist(nextConfig)
