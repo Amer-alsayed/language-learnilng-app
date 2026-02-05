@@ -1,0 +1,292 @@
+{
+  "$schema": "../schema.json",
+  "title": "Exams & Dialogues (TTS)",
+  "description": "Mixed review tests + formal/informal mini-dialogues. Listening uses browser TTS (no audio files).",
+  "order": 7,
+  "lessons": [
+    {
+      "title": "Exam 1: Alphabet + Special Characters",
+      "order": 1,
+      "content": {
+        "passingScore": 0.85,
+        "exercises": [
+          {
+            "id": "2ed028a6-5918-4c57-bd14-b1e8dd5daa49",
+            "type": "match_pairs",
+            "prompt": "Match the letter to its pronunciation",
+            "pairs": [
+              {
+                "left": "A",
+                "right": "ah"
+              },
+              {
+                "left": "E",
+                "right": "ay"
+              },
+              {
+                "left": "I",
+                "right": "ee"
+              },
+              {
+                "left": "J",
+                "right": "yot"
+              },
+              {
+                "left": "V",
+                "right": "fow"
+              },
+              {
+                "left": "W",
+                "right": "vay"
+              }
+            ]
+          },
+          {
+            "id": "a6b7e08b-9f5d-4e8c-8abd-3a51695c7613",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"tset\"?",
+            "options": ["X", "S", "C", "Z"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "daa59411-adff-428a-bc31-2be819f552f0",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"Ü\"?",
+            "options": ["Rose", "Öl", "Tür", "Apfel"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "2d4af6d8-2636-4b56-8448-473b039044ce",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"street\" (شارع)",
+            "options": ["Straße", "Strasße", "Strasse", "Strase"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "a49799ad-aba8-474d-b48f-fd699c88ffd6",
+            "type": "typing",
+            "prompt": "Type the German word for \"تفاح\" (umlaut)",
+            "correctAnswer": "Äpfel"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Exam 2: Spelling Traps (V/W, S/Z, ei/ie)",
+      "order": 2,
+      "content": {
+        "passingScore": 0.85,
+        "exercises": [
+          {
+            "id": "1e93e7b8-15a0-445f-8060-a4d1cd2ccea3",
+            "type": "multiple_choice",
+            "prompt": "You hear \"Fogel\" — how do you spell it correctly?",
+            "options": ["Vogel", "Fogel", "Wogel", "Vogell"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "558d23bb-7bc5-46a5-9b89-b3c4a78452df",
+            "type": "multiple_choice",
+            "prompt": "Wasser is pronounced like English:",
+            "options": ["w", "f", "v", "z"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "641f2113-1007-4d30-b6b7-61bbbbdf7c8c",
+            "type": "multiple_choice",
+            "prompt": "Which is correct for the sound \"tsait\"?",
+            "options": ["Zait", "Zeit", "Sait", "Seit"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "5e45c211-fbab-4782-bf98-ea5229da76f4",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"love\" (حب)",
+            "options": ["Liebee", "Leibe", "Liebe", "Libee"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "ac1b3f6a-17df-45af-9d41-053b426d8a02",
+            "type": "typing",
+            "prompt": "Type the correct spelling: \"day\" in German (sounds like \"Tak\")",
+            "correctAnswer": "Tag"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Dialogue (Formal) — Sie",
+      "order": 3,
+      "content": {
+        "exercises": [
+          {
+            "id": "20d46ec7-cf4e-4f4f-a147-fd66aa4aafd0",
+            "type": "listening",
+            "prompt": "Listen (formal) and type what you hear.",
+            "correctTranscript": "Guten Tag. Wie heißen Sie?"
+          },
+          {
+            "id": "102f774a-b54b-4738-a342-4a4a1c8ed252",
+            "type": "listening",
+            "prompt": "Listen (formal) and type what you hear.",
+            "correctTranscript": "Gut, danke. Und Ihnen?"
+          },
+          {
+            "id": "ef224119-199f-4498-bacd-5918234f6330",
+            "type": "multiple_choice",
+            "prompt": "Which question is formal? (رسمي)",
+            "options": [
+              "Wie geht es dir?",
+              "Woher kommst du?",
+              "Woher kommen Sie?",
+              "Wie heißt du?"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "d0f3b076-2a0b-40d1-b61f-2cab655fc091",
+            "type": "word_bank",
+            "prompt": "Build the formal question: \"How are you?\"",
+            "sentenceParts": ["Wie", "geht", "es", "Ihnen"],
+            "correctOrder": [0, 1, 2, 3]
+          },
+          {
+            "id": "7a3df958-4275-4f97-b26f-30a11edaa37f",
+            "type": "typing",
+            "prompt": "Type the formal goodbye (face-to-face):",
+            "correctAnswer": "Auf Wiedersehen"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Dialogue (Informal) — du",
+      "order": 4,
+      "content": {
+        "exercises": [
+          {
+            "id": "56dc5582-854c-4ebc-90dc-89f211993499",
+            "type": "listening",
+            "prompt": "Listen (informal) and type what you hear.",
+            "correctTranscript": "Hi! Wie heißt du?"
+          },
+          {
+            "id": "b0ba74cc-c6e7-4557-8106-760c82826904",
+            "type": "listening",
+            "prompt": "Listen (informal) and type what you hear.",
+            "correctTranscript": "Gut, danke. Und dir?"
+          },
+          {
+            "id": "d2b1e9cb-5fa8-4fcf-92d4-5de81655df97",
+            "type": "multiple_choice",
+            "prompt": "Pick the informal question: \"Where are you from?\" (غير رسمي)",
+            "options": [
+              "Wie heißen Sie?",
+              "Woher kommen Sie?",
+              "Wie geht es Ihnen?",
+              "Woher kommst du?"
+            ],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "81933b60-e9d8-42d5-b633-a0cd0e039e71",
+            "type": "word_bank",
+            "prompt": "Build: \"See you tomorrow\"",
+            "sentenceParts": ["Bis", "morgen"],
+            "correctOrder": [0, 1]
+          },
+          {
+            "id": "6ea914f9-a2fa-4a2e-9d5e-316d86fdc658",
+            "type": "typing",
+            "prompt": "Type the informal goodbye:",
+            "correctAnswer": "Tschüss"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Final Exam: Mixed Review",
+      "order": 5,
+      "content": {
+        "passingScore": 0.9,
+        "exercises": [
+          {
+            "id": "d8483533-2641-4c12-b77a-df351bcd00ab",
+            "type": "multiple_choice",
+            "prompt": "Which pattern is pronounced \"sh\"?",
+            "options": ["st", "sp", "sch", "ch"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "16a1752a-7d80-45a0-85cf-6e955f74af3c",
+            "type": "multiple_choice",
+            "prompt": "Z is always pronounced:",
+            "options": ["sh", "s", "ts", "z"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "afcd52e2-2871-4af3-baca-7301e8acdfc9",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"äu\"?",
+            "options": ["neu", "Häuser", "Haus", "Liebe"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "5c4ec44f-590c-4f62-96d6-83f7c89d6bdf",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Waser", "Vasser", "Wasser"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "4f2644e9-7ba2-47a8-b386-b346b1c105f9",
+            "type": "listening",
+            "prompt": "Listen and type what you hear.",
+            "correctTranscript": "Guten Morgen!"
+          },
+          {
+            "id": "6db9f914-91e8-4453-8fe0-ce1b11197e5a",
+            "type": "typing",
+            "prompt": "Type the German word for \"منزل\"",
+            "correctAnswer": "Haus"
+          },
+          {
+            "id": "49ca4fdd-0bdf-4f2b-aa82-b6abe2a04aba",
+            "type": "match_pairs",
+            "prompt": "Match the combination to the sound",
+            "pairs": [
+              {
+                "left": "ie",
+                "right": "ee (see)"
+              },
+              {
+                "left": "ei",
+                "right": "eye (my)"
+              },
+              {
+                "left": "au",
+                "right": "ow (cow)"
+              },
+              {
+                "left": "eu",
+                "right": "oy (boy)"
+              }
+            ]
+          },
+          {
+            "id": "4235db5b-7b34-401e-9fc7-c838a85981e7",
+            "type": "multiple_choice",
+            "prompt": "Pick the formal farewell on the phone:",
+            "options": [
+              "Auf Wiedersehen",
+              "Bis dann",
+              "Auf Wiederhören",
+              "Tschüss"
+            ],
+            "correctOptionIndex": 2
+          }
+        ]
+      }
+    }
+  ]
+}

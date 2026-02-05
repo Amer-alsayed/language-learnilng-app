@@ -5,8 +5,14 @@ import { cn } from '@/lib/utils'
 import { useRef, useEffect } from 'react'
 
 export function Typing({ exercise }: { exercise: TypingType }) {
-  const { setDraftAnswer, draftAnswer, status, lastFeedback } = useLessonStore()
+  const { setDraftAnswer, draftAnswer, status, lastFeedback, submitAnswer } =
+    useLessonStore()
   const inputRef = useRef<HTMLTextAreaElement>(null)
+
+  const isNumeric =
+    /^[0-9]+$/.test(exercise.correctAnswer.trim()) &&
+    (exercise.acceptableAnswers?.every((a) => /^[0-9]+$/.test(a.trim())) ??
+      true)
 
   // Auto-focus on mount
   useEffect(() => {
@@ -16,8 +22,8 @@ export function Typing({ exercise }: { exercise: TypingType }) {
   }, [status])
 
   return (
-    <div className="mx-auto mt-4 flex w-full max-w-2xl flex-col gap-8 px-4 sm:mt-8">
-      <h2 className="font-heading text-center text-2xl leading-tight font-bold text-zinc-800 sm:text-3xl">
+    <div className="mx-auto mt-2 flex w-full max-w-2xl flex-col gap-6 px-0 sm:mt-6 sm:gap-8">
+      <h2 className="font-heading text-foreground text-center text-xl leading-tight font-extrabold sm:text-3xl">
         {exercise.prompt}
       </h2>
 
@@ -26,25 +32,34 @@ export function Typing({ exercise }: { exercise: TypingType }) {
           ref={inputRef}
           value={draftAnswer || ''}
           onChange={(e) => setDraftAnswer(e.target.value)}
-          onKeyDown={() => {
-            // Prevent Enter from new-line, maybe submit?
-            // For now just let it be.
+          onKeyDown={(e) => {
+            if (e.key !== 'Enter') return
+            if (e.shiftKey || e.metaKey || e.ctrlKey || e.altKey) return
+            e.preventDefault()
+            if (status !== 'active') return
+            if (
+              typeof draftAnswer === 'string' &&
+              draftAnswer.trim().length === 0
+            )
+              return
+            submitAnswer()
           }}
           disabled={status !== 'active'}
-          placeholder="Type your answer here..."
+          placeholder={isNumeric ? '' : 'Type your answer here...'}
+          inputMode={isNumeric ? 'numeric' : undefined}
           className={cn(
-            'min-h-[160px] w-full resize-none rounded-2xl border-2 p-6 text-xl font-medium transition-all outline-none sm:text-2xl',
+            'placeholder:text-muted-foreground min-h-[96px] w-full resize-none rounded-2xl border-2 p-4 text-lg font-medium transition-colors outline-none sm:min-h-[150px] sm:p-6 sm:text-2xl',
             // Idle
             status === 'active' &&
-              'border-zinc-200 bg-zinc-50 text-zinc-800 focus:border-zinc-400',
+              'border-border bg-card text-foreground focus:border-primary/60',
             // Correct
             status === 'feedback' &&
               lastFeedback?.isCorrect &&
-              'border-green-500 bg-green-50 text-green-800',
+              'border-emerald-500 bg-emerald-50 text-emerald-900',
             // Wrong
             status === 'feedback' &&
               !lastFeedback?.isCorrect &&
-              'border-red-500 bg-red-50 text-red-800',
+              'border-red-500 bg-red-50 text-red-900',
             // Disabled state
             status !== 'active' && status !== 'feedback' && 'opacity-50'
           )}
@@ -56,7 +71,7 @@ export function Typing({ exercise }: { exercise: TypingType }) {
       </div>
 
       {status === 'active' && (
-        <div className="text-center text-sm text-zinc-400">
+        <div className="text-muted-foreground text-center text-xs sm:text-sm">
           Press <strong>Enter</strong> to submit (Not implemented yet, click
           button)
         </div>

@@ -48,23 +48,18 @@ export function FeedbackSheet({
       open={isOpen}
       onOpenChange={onOpenChange}
       shouldScaleBackground={false}
-      // disable scaling to prevent background shifts that might reveal white lines
-      modal={false}
-      // Non-modal to allow interaction? actually modal is fine, but maybe 'false' removes the overlay issue?
-      // Let's keep modal true (default) but remove the overlay?
-      // User complaint: "white line at the bottom".
-      // Drawer content usually sits at bottom.
+      dismissible={false}
     >
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px]" />
-        <Drawer.Content className="fixed right-0 bottom-0 left-0 z-50 flex flex-col outline-none focus:outline-none">
+        <Drawer.Overlay className="fixed inset-0 z-40 bg-transparent" />
+        <Drawer.Content className="fixed right-0 bottom-0 left-0 z-50 flex [transform:translateZ(0)] flex-col will-change-transform outline-none focus:outline-none">
           {/* 
                We put the color on the main wrapper. 
                Added pb-safe to handle iPhone home bar.
             */}
           <div
             className={cn(
-              'w-full rounded-t-[32px] p-6 pb-12 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] transition-colors duration-300',
+              'max-h-[30dvh] w-full overflow-y-auto rounded-t-[32px] p-6 pb-12 shadow-[0_-12px_32px_-18px_rgba(15,23,42,0.18)] transition-colors duration-300',
               activeIsCorrect ? 'bg-green-100' : 'bg-red-100'
             )}
           >

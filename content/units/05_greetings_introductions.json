@@ -1,0 +1,305 @@
+{
+  "$schema": "../schema.json",
+  "title": "Greetings & Introductions",
+  "description": "Master formal vs informal greetings, introductions, and everyday phrases.",
+  "order": 5,
+  "lessons": [
+    {
+      "title": "Greetings (General)",
+      "order": 1,
+      "content": {
+        "exercises": [
+          {
+            "id": "e00d5c16-7a9f-428c-a82a-b736045a6c25",
+            "type": "match_pairs",
+            "prompt": "Match the greeting to the Arabic meaning",
+            "pairs": [
+              {
+                "left": "Guten Morgen",
+                "right": "صباح الخير"
+              },
+              {
+                "left": "Guten Tag",
+                "right": "مرحبا / يوم سعيد"
+              },
+              {
+                "left": "Guten Abend",
+                "right": "مساء الخير"
+              },
+              {
+                "left": "Hallo",
+                "right": "مرحبا / أهلا"
+              },
+              {
+                "left": "Willkommen",
+                "right": "أهلا وسهلا"
+              }
+            ]
+          },
+          {
+            "id": "27cb94eb-b459-4de4-a53f-11632288c3ed",
+            "type": "multiple_choice",
+            "prompt": "Which greeting is most appropriate for the morning? (الصباح)",
+            "options": ["Hallo", "Guten Morgen", "Guten Tag", "Guten Abend"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "47ae51b7-152a-47bf-907e-29b340a0e43c",
+            "type": "multiple_choice",
+            "prompt": "Pick the informal greeting (غير رسمي)",
+            "options": ["Auf Wiedersehen", "Guten Abend", "Guten Tag", "Hallo"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "475a0839-4f02-4c77-8793-7d6af5153347",
+            "type": "word_bank",
+            "prompt": "Build the sentence: \"Good morning!\"",
+            "sentenceParts": ["Guten", "Morgen"],
+            "correctOrder": [0, 1]
+          },
+          {
+            "id": "68cbdea2-a550-4ed2-ad2f-ba1e2330f74d",
+            "type": "typing",
+            "prompt": "Type: \"Welcome\" in German (أهلا وسهلا)",
+            "correctAnswer": "Willkommen"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Names & Ages (Formal vs Informal)",
+      "order": 2,
+      "content": {
+        "exercises": [
+          {
+            "id": "41278f07-8c18-4c87-804a-7c87e7df1ca0",
+            "type": "multiple_choice",
+            "prompt": "Choose the formal question: \"What is your name?\" (رسمي)",
+            "options": [
+              "Wie heißt du?",
+              "Woher kommst du?",
+              "Wie geht es dir?",
+              "Wie heißen Sie?"
+            ],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "6b7e9574-5828-48af-b394-d8b3c8162f0e",
+            "type": "word_bank",
+            "prompt": "Build the formal question: \"What is your name?\"",
+            "sentenceParts": ["Wie", "heißen", "Sie"],
+            "correctOrder": [0, 1, 2]
+          },
+          {
+            "id": "7d4d5ac7-88fd-4050-a919-c7dfa6d7cbc7",
+            "type": "word_bank",
+            "prompt": "Build the answer: \"My name is Ahmed.\"",
+            "sentenceParts": ["Ich", "heiße", "Ahmed"],
+            "correctOrder": [0, 1, 2]
+          },
+          {
+            "id": "06254dd0-881f-4326-bda1-e0b35961349e",
+            "type": "multiple_choice",
+            "prompt": "Choose the informal question: \"How old are you?\" (غير رسمي)",
+            "options": [
+              "Wie geht es Ihnen?",
+              "Wie alt sind Sie?",
+              "Wie alt bist du?",
+              "Woher kommen Sie?"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "c7ce7f63-95cb-4e95-af48-66a14c88fe66",
+            "type": "typing",
+            "prompt": "Complete: \"Ich bin ___ Jahre alt\" (type a number)",
+            "correctAnswer": "20",
+            "acceptableAnswers": ["18", "19", "21", "22", "25", "30"]
+          }
+        ]
+      }
+    },
+    {
+      "title": "Where are you from?",
+      "order": 3,
+      "content": {
+        "exercises": [
+          {
+            "id": "110aa6e6-f596-403f-8a2c-0b07a59abda8",
+            "type": "multiple_choice",
+            "prompt": "Choose the formal question: \"Where are you from?\" (رسمي)",
+            "options": [
+              "Wie geht es dir?",
+              "Wie heißt du?",
+              "Woher kommen Sie?",
+              "Woher kommst du?"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "cd9eacfd-e5a7-415c-95e7-88e102aeb9de",
+            "type": "word_bank",
+            "prompt": "Build the informal question: \"Where are you from?\"",
+            "sentenceParts": ["Woher", "kommst", "du"],
+            "correctOrder": [0, 1, 2]
+          },
+          {
+            "id": "b548dde1-c4c7-41fa-8260-7f9f9d52e7cf",
+            "type": "word_bank",
+            "prompt": "Build the answer: \"I come from Lebanon.\"",
+            "sentenceParts": ["Ich", "komme", "aus", "dem", "Libanon"],
+            "correctOrder": [0, 1, 2, 3, 4]
+          },
+          {
+            "id": "239ada1a-108c-414a-85fe-d5c8e617d52b",
+            "type": "multiple_choice",
+            "prompt": "Pick the correct answer to \"Woher kommen Sie?\"",
+            "options": [
+              "Ich bin ... Jahre alt",
+              "Wie geht es dir?",
+              "Ich heiße...",
+              "Ich komme aus..."
+            ],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "2115166c-4bb2-48d1-a535-4d459f3d18ea",
+            "type": "typing",
+            "prompt": "Type: \"I come from...\" in German",
+            "correctAnswer": "Ich komme aus..."
+          }
+        ]
+      }
+    },
+    {
+      "title": "How are you?",
+      "order": 4,
+      "content": {
+        "exercises": [
+          {
+            "id": "8d28dbe6-93c9-484b-9de6-844c0e9787b3",
+            "type": "multiple_choice",
+            "prompt": "Formal: \"How are you?\" (رسمي)",
+            "options": [
+              "Wie geht es dir?",
+              "Wie geht es Ihnen?",
+              "Wie heißt du?",
+              "Woher kommst du?"
+            ],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "3c20886c-0726-444b-9cda-003cf06f0ad5",
+            "type": "multiple_choice",
+            "prompt": "Pick a polite formal reply:",
+            "options": [
+              "Bis morgen",
+              "Gut, danke. Und Ihnen?",
+              "So lala",
+              "Wie heißt du?"
+            ],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "be1e3513-e688-472e-8514-0bd24a0ce087",
+            "type": "multiple_choice",
+            "prompt": "Pick the informal reply:",
+            "options": [
+              "Gut, danke. Und Ihnen?",
+              "Auf Wiedersehen",
+              "Gut, danke. Und dir?",
+              "Einen schönen Tag noch"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "19ab503a-e098-485d-b598-fa4d35fbad17",
+            "type": "word_bank",
+            "prompt": "Build: \"Not so good.\"",
+            "sentenceParts": ["Nicht", "so", "gut"],
+            "correctOrder": [0, 1, 2]
+          },
+          {
+            "id": "c13ebace-7d2f-47f2-81e7-e25c8bdbb58a",
+            "type": "typing",
+            "prompt": "Type: \"So-so\" (informal)",
+            "correctAnswer": "So lala"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Farewells",
+      "order": 5,
+      "content": {
+        "exercises": [
+          {
+            "id": "e6ebecf1-3344-47ce-b0d4-11abdb96d916",
+            "type": "match_pairs",
+            "prompt": "Match the farewell to the Arabic meaning",
+            "pairs": [
+              {
+                "left": "Auf Wiedersehen",
+                "right": "إلى اللقاء"
+              },
+              {
+                "left": "Tschüss",
+                "right": "وداعاً / باي"
+              },
+              {
+                "left": "Mach's gut",
+                "right": "اعتن بنفسك"
+              },
+              {
+                "left": "Bis bald",
+                "right": "أراك قريباً"
+              },
+              {
+                "left": "Bis morgen",
+                "right": "أراك غداً"
+              }
+            ]
+          },
+          {
+            "id": "95759aad-5c7e-40d0-b840-d1ba89f549f6",
+            "type": "multiple_choice",
+            "prompt": "Which farewell is typically used on the phone? (رسمي)",
+            "options": [
+              "Tschüss",
+              "Auf Wiedersehen",
+              "Auf Wiederhören",
+              "Bis morgen"
+            ],
+            "correctOptionIndex": 2,
+            "explanation": "Auf Wiederhören is used on the phone."
+          },
+          {
+            "id": "a0bf7ddc-e91b-42e3-90e1-7ba8a3af6669",
+            "type": "multiple_choice",
+            "prompt": "Pick the informal goodbye (غير رسمي)",
+            "options": [
+              "Auf Wiedersehen",
+              "Willkommen",
+              "Tschüss",
+              "Einen schönen Tag noch"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "5543a62e-ecc2-4a31-a26d-f364ab15ef66",
+            "type": "word_bank",
+            "prompt": "Build: \"See you tomorrow\"",
+            "sentenceParts": ["Bis", "morgen"],
+            "correctOrder": [0, 1]
+          },
+          {
+            "id": "9321370b-c89c-403f-a9e9-185d10a3a277",
+            "type": "typing",
+            "prompt": "Type: \"See you soon\" in German",
+            "correctAnswer": "Bis bald"
+          }
+        ]
+      }
+    }
+  ]
+}

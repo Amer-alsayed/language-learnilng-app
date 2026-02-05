@@ -33,20 +33,20 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
   const isSelected = (index: number) => selectedIndices.includes(index)
 
   return (
-    <div className="mx-auto mt-4 flex w-full max-w-2xl flex-col gap-8 px-4 sm:mt-8">
-      <h2 className="font-heading text-center text-2xl leading-tight font-bold text-zinc-800 sm:text-3xl">
+    <div className="mx-auto mt-2 flex w-full max-w-2xl flex-col gap-6 px-0 sm:mt-6 sm:gap-8">
+      <h2 className="font-heading text-foreground text-center text-xl leading-tight font-extrabold sm:text-3xl">
         {exercise.prompt}
       </h2>
 
       {/* The Sentence Line (Drop Zone) */}
-      <div className="flex min-h-[80px] w-full flex-wrap items-center justify-center gap-2 rounded-xl border-b-2 border-zinc-200 bg-zinc-100 p-4 transition-colors">
+      <div className="border-border bg-card flex min-h-[56px] w-full flex-wrap items-center justify-center gap-2 rounded-2xl border p-3 transition-colors sm:min-h-[80px] sm:p-4">
         <AnimatePresence mode="popLayout">
           {selectedIndices.length === 0 && (
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
-              className="pointer-events-none text-xl font-bold text-zinc-400 italic select-none"
+              className="text-muted-foreground pointer-events-none text-base font-bold italic select-none sm:text-xl"
             >
               Build sentence...
             </motion.span>
@@ -59,7 +59,7 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={() => handleWordClick(index)}
-              className="rounded-lg border-2 border-zinc-200 bg-white px-3 py-2 font-bold text-zinc-700 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-500"
+              className="border-border bg-muted text-foreground rounded-xl border px-3 py-2 text-sm font-bold shadow-sm transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-900 sm:text-base"
             >
               {exercise.sentenceParts[index]}
             </motion.button>
@@ -76,7 +76,7 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
               {/* Placeholder to keep layout stable */}
               <div
                 className={cn(
-                  'rounded-xl border-2 border-transparent px-4 py-3 font-bold text-transparent select-none',
+                  'rounded-xl border-2 border-transparent px-4 py-2 text-sm font-bold text-transparent select-none sm:py-3 sm:text-base',
                   selected ? 'block' : 'hidden' // Only take space if moved
                 )}
               >
@@ -87,7 +87,7 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
               {!selected && (
                 <motion.button
                   layoutId={`word-${index}`}
-                  className="absolute inset-0 rounded-xl border-2 border-zinc-200 bg-white px-4 py-3 font-bold text-zinc-700 shadow-[0_2px_0_0_rgba(0,0,0,0.1)] transition-all hover:-translate-y-0.5 hover:bg-zinc-50 active:translate-y-0 active:shadow-none"
+                  className="border-border bg-card text-foreground hover:bg-muted absolute inset-0 rounded-xl border-2 px-4 py-2 text-sm font-bold shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-none sm:py-3 sm:text-base"
                   onClick={() => handleWordClick(index)}
                 >
                   {word}
@@ -96,7 +96,7 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
 
               {/* If not selected, render normal button. If selected, render nothing (it moved) */}
               {!selected && (
-                <div className="pointer-events-none px-4 py-3 opacity-0">
+                <div className="pointer-events-none px-4 py-2 opacity-0 sm:py-3">
                   {word}
                 </div>
               )}

@@ -26,6 +26,7 @@ async function getJsonFiles(dir: string): Promise<string[]> {
 
 async function main() {
   const isDryRun = process.argv.includes('--dry-run')
+  const isReset = process.argv.includes('--reset')
 
   console.log(`🌱 Starting Seeder (Dry Run: ${isDryRun})`)
 
@@ -45,6 +46,28 @@ async function main() {
     !isDryRun && supabaseUrl && serviceRoleKey
       ? createClient(supabaseUrl, serviceRoleKey)
       : null
+
+  if (isReset) {
+    if (isDryRun) {
+      console.log('ℹ️  --reset ignored in dry-run mode.')
+    } else if (!client) {
+      console.log('❌ Cannot reset: database client is not initialized.')
+      process.exit(1)
+    } else {
+      console.log(
+        '🧨 Reset enabled: deleting all units (cascades lessons + progress)...'
+      )
+      const { error: resetError } = await client
+        .from('units')
+        .delete()
+        .gte('order_index', 0)
+
+      if (resetError) {
+        throw new Error(`Failed to reset units: ${resetError.message}`)
+      }
+      console.log('✅ Reset complete.')
+    }
+  }
 
   // 2. Scan Files
   const contentDir = path.resolve(process.cwd(), 'content/units')

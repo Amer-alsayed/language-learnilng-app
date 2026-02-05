@@ -143,6 +143,9 @@ export const MatchPairsSchema = BaseExerciseSchema.extend({
 export const ListeningSchema = BaseExerciseSchema.extend({
   type: z.literal('listening'),
   correctTranscript: z.string().min(1, 'Transcript cannot be empty'),
+  // Optional: use browser TTS so we don't need audio files.
+  // If omitted, UI can still use correctTranscript as the TTS source.
+  ttsText: z.string().min(1).optional(),
 })
 
 // =============================================================================

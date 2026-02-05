@@ -1,0 +1,266 @@
+{
+  "$schema": "../schema.json",
+  "title": "Special Characters & Umlauts",
+  "description": "Learn Ä/Ö/Ü and ß (Eszett), and practice spelling and meaning.",
+  "order": 2,
+  "lessons": [
+    {
+      "title": "Ä, Ö, Ü — The Umlauts",
+      "order": 1,
+      "content": {
+        "exercises": [
+          {
+            "id": "ee0e322f-2fc5-435b-adea-4621da96c3ae",
+            "type": "match_pairs",
+            "prompt": "Match the umlaut to its sound",
+            "pairs": [
+              {
+                "left": "Ä",
+                "right": "eh (air)"
+              },
+              {
+                "left": "Ö",
+                "right": "oeh (rounded)"
+              },
+              {
+                "left": "Ü",
+                "right": "ueh (rounded)"
+              }
+            ]
+          },
+          {
+            "id": "a5920a62-35df-46c7-9391-3380c39b25fd",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"Ä\"?",
+            "options": ["Tür", "Apfel", "Öl", "Äpfel"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "281bd953-e48f-43b1-8b5b-b0e8c96b1f1d",
+            "type": "typing",
+            "prompt": "Type the German word for \"باب\"",
+            "correctAnswer": "Tür"
+          },
+          {
+            "id": "c593e59e-4c90-4d54-b818-8dc209993eeb",
+            "type": "typing",
+            "prompt": "Type the German word for \"زيت\"",
+            "correctAnswer": "Öl"
+          },
+          {
+            "id": "a0c5dd0a-f2ef-4aa3-8582-9398f7dae09d",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"ueh (rounded)\"?",
+            "options": ["U", "Ä", "Ö", "Ü"],
+            "correctOptionIndex": 3
+          }
+        ]
+      }
+    },
+    {
+      "title": "ß (Eszett) — Sharp \"ss\"",
+      "order": 2,
+      "content": {
+        "exercises": [
+          {
+            "id": "05932789-9e31-4d3d-8a0c-ddabe8eb965a",
+            "type": "multiple_choice",
+            "prompt": "What is the German character \"ß\" called?",
+            "options": ["Eszett", "Ypsilon", "Umlaut", "Beta"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "a98e629a-1f54-4ebb-a32e-067db42d8756",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"street\"",
+            "options": ["Strasse", "Strasße", "Straße", "Strase"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "3c7a5683-eef6-4ebb-a337-6cbb6cc5f086",
+            "type": "multiple_choice",
+            "prompt": "What is \"Straße\" in Arabic?",
+            "options": ["بيت", "مدينة", "باب", "شارع"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "075978b3-015c-4700-ba74-b47e88fa6939",
+            "type": "typing",
+            "prompt": "Type the German word: شارع",
+            "correctAnswer": "Straße"
+          },
+          {
+            "id": "e0e076cb-3acd-4cc6-805a-3bbe2d0d20c4",
+            "type": "multiple_choice",
+            "prompt": "ß is pronounced like:",
+            "options": ["sh", "ss", "ts", "z"],
+            "correctOptionIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "title": "Review: Umlauts & ß",
+      "order": 3,
+      "content": {
+        "exercises": [
+          {
+            "id": "082631bb-25da-4692-8bba-2f60c9f88a9e",
+            "type": "match_pairs",
+            "prompt": "Match the German word to the Arabic meaning",
+            "pairs": [
+              {
+                "left": "Äpfel",
+                "right": "تفاح"
+              },
+              {
+                "left": "Öl",
+                "right": "زيت"
+              },
+              {
+                "left": "Tür",
+                "right": "باب"
+              },
+              {
+                "left": "Straße",
+                "right": "شارع"
+              }
+            ]
+          },
+          {
+            "id": "98705ac6-46ed-4bff-a628-9b135f661126",
+            "type": "multiple_choice",
+            "prompt": "Pick the word with Ö",
+            "options": ["Öl", "Tür", "Straße", "Äpfel"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "5e68b104-a66c-4175-ab19-fef846141224",
+            "type": "multiple_choice",
+            "prompt": "Pick the word with Ü",
+            "options": ["Öl", "Apfel", "Tür", "Rose"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "1949e6b8-beda-4f5c-b034-01187c79369d",
+            "type": "multiple_choice",
+            "prompt": "Pick the word with ß",
+            "options": ["Straße", "Schule", "Wasser", "Stadt"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "f6d975e4-6895-4f10-9e23-9f63d780f8ce",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling",
+            "options": ["Äpfel", "Apfel", "Äpvel", "Aepfel"],
+            "correctOptionIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "title": "Vowel Combinations: ei / ie",
+      "order": 4,
+      "content": {
+        "exercises": [
+          {
+            "id": "829f2ef3-9c4c-479c-a02f-e5481dec0299",
+            "type": "match_pairs",
+            "prompt": "Match the combination to its sound",
+            "pairs": [
+              {
+                "left": "ei",
+                "right": "eye (my)"
+              },
+              {
+                "left": "ie",
+                "right": "ee (see)"
+              }
+            ]
+          },
+          {
+            "id": "2115fd81-58a1-404f-a2b6-2f81679ec9b4",
+            "type": "multiple_choice",
+            "prompt": "Which combination sounds like \"eye\"?",
+            "options": ["ie", "au", "eu", "ei"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "9b48f3ec-7ef5-40df-b03d-6541e5577416",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"ie\"?",
+            "options": ["Mai", "neu", "Liebe", "Haus"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "7e50deae-57d0-4d13-af22-58e44d11867a",
+            "type": "typing",
+            "prompt": "Type the German word for \"حب\"",
+            "correctAnswer": "Liebe"
+          },
+          {
+            "id": "9db5c8a3-edcf-4d08-885a-223bfd9e8477",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"my\":",
+            "options": ["miener", "mein", "mien", "meien"],
+            "correctOptionIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "title": "Vowel Combinations: au / eu / äu",
+      "order": 5,
+      "content": {
+        "exercises": [
+          {
+            "id": "91e87674-067d-49b6-a90c-51c047567385",
+            "type": "match_pairs",
+            "prompt": "Match the combination to its sound",
+            "pairs": [
+              {
+                "left": "au",
+                "right": "ow (cow)"
+              },
+              {
+                "left": "eu",
+                "right": "oy (boy)"
+              },
+              {
+                "left": "äu",
+                "right": "oy (boy)"
+              }
+            ]
+          },
+          {
+            "id": "15e0350e-66cb-44b9-8b2f-e6fb21813d81",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"au\"?",
+            "options": ["Liebe", "Haus", "neu", "Mai"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "4dd183c8-724c-4329-bba3-02aa2ae64c65",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"eu\"?",
+            "options": ["neu", "Haus", "Liebe", "Häuser"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "e0b212c8-bdaa-4d05-a43d-e9a5f54d4428",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"äu\"?",
+            "options": ["Haus", "Häuser", "neu", "Mai"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "9d930b8e-b4ef-4467-b628-e7c6ed8ed127",
+            "type": "typing",
+            "prompt": "Type the German word for \"منازل\"",
+            "correctAnswer": "Häuser"
+          }
+        ]
+      }
+    }
+  ]
+}

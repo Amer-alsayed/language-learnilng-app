@@ -1,6 +1,8 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { revalidatePath } from 'next/cache'
 
 export async function submitLessonResult(lessonId: string, stars: number) {
@@ -25,7 +27,20 @@ export async function submitLessonResult(lessonId: string, stars: number) {
     return { error: error.message }
   }
 
-  await unlockNextLesson(supabase, user.id, lessonId)
+  // Prefer DB-side unlock (SECURITY DEFINER) if available; fallback to service-role
+  // upsert when the RPC isn't present yet.
+  const unlockRpc = await supabase.rpc('unlock_next_lesson', {
+    p_lesson_id: lessonId,
+  })
+
+  if (unlockRpc.error) {
+    const service = getServiceClient()
+    if (service) {
+      await unlockNextLesson(service, user.id, lessonId)
+    } else {
+      console.error('Unlock next lesson error:', unlockRpc.error)
+    }
+  }
 
   // 3. Revalidate Dashboard to show unlocked next lesson
   revalidatePath('/dashboard')
@@ -34,8 +49,19 @@ export async function submitLessonResult(lessonId: string, stars: number) {
   return { success: true }
 }
 
+function getServiceClient(): SupabaseClient | null {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  if (!supabaseUrl || !serviceRoleKey) return null
+
+  return createServiceClient(supabaseUrl, serviceRoleKey, {
+    auth: { persistSession: false },
+  })
+}
+
 async function unlockNextLesson(
-  supabase: Awaited<ReturnType<typeof createClient>>,
+  supabase: SupabaseClient,
   userId: string,
   lessonId: string
 ) {

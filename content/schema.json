@@ -225,6 +225,10 @@
                               "type": "string",
                               "const": "listening"
                             },
+                            "ttsText": {
+                              "type": "string",
+                              "minLength": 1
+                            },
                             "correctTranscript": {
                               "type": "string",
                               "minLength": 1

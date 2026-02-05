@@ -27,19 +27,19 @@ export function AnswerButton({
   // Gender Styles
   const genderStyles = {
     masc: {
-      idle: 'hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600',
-      selected: 'border-blue-500 bg-blue-100 text-blue-700',
-      badge: 'group-hover:border-blue-400 group-hover:text-blue-500',
+      idle: 'hover:border-blue-300 hover:bg-blue-50 hover:text-blue-900',
+      selected: 'border-blue-500 bg-blue-50 text-blue-900',
+      badge: 'group-hover:border-blue-200 group-hover:text-blue-700',
     },
     fem: {
-      idle: 'hover:border-red-400 hover:bg-red-50 hover:text-red-600',
-      selected: 'border-red-500 bg-red-100 text-red-700',
-      badge: 'group-hover:border-red-400 group-hover:text-red-500',
+      idle: 'hover:border-red-300 hover:bg-red-50 hover:text-red-900',
+      selected: 'border-red-500 bg-red-50 text-red-900',
+      badge: 'group-hover:border-red-200 group-hover:text-red-700',
     },
     neut: {
-      idle: 'hover:border-green-400 hover:bg-green-50 hover:text-green-600',
-      selected: 'border-green-500 bg-green-100 text-green-700',
-      badge: 'group-hover:border-green-400 group-hover:text-green-500',
+      idle: 'hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-900',
+      selected: 'border-emerald-500 bg-emerald-50 text-emerald-900',
+      badge: 'group-hover:border-emerald-200 group-hover:text-emerald-700',
     },
   }
 
@@ -48,32 +48,26 @@ export function AnswerButton({
   return (
     <motion.button
       type={type ?? 'button'}
-      whileHover={
-        state === 'idle'
-          ? {
-              scale: 1.02,
-              backgroundColor: gStyle ? undefined : 'rgba(0,0,0,0.02)',
-            }
-          : {}
-      }
+      whileHover={state === 'idle' ? { scale: 1.01 } : {}}
       whileTap={state === 'idle' ? { scale: 0.98 } : {}}
       className={cn(
-        'group focus-visible:ring-ring relative flex w-full items-center rounded-xl border-2 p-4 text-left font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60',
+        'group focus-visible:ring-ring relative flex w-full items-center rounded-2xl border-2 px-3 py-2.5 text-left font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-100 sm:px-4 sm:py-3.5',
         // Idle State
-        state === 'idle' && 'border-zinc-200 bg-white text-zinc-800 shadow-sm',
+        state === 'idle' && 'border-border bg-card text-foreground shadow-sm',
         // Gender Specific Idle
-        state === 'idle' && gStyle ? gStyle.idle : 'hover:border-zinc-300',
+        state === 'idle' && gStyle ? gStyle.idle : 'hover:bg-muted',
 
         // Selected State
         state === 'selected' &&
           (gStyle
             ? gStyle.selected
-            : 'border-primary bg-primary/5 text-primary'),
+            : 'border-primary bg-primary/10 text-foreground'),
 
         // Correct State
-        state === 'correct' && 'border-green-500 bg-green-50 text-green-700',
+        state === 'correct' &&
+          'border-emerald-500 bg-emerald-50 text-emerald-900',
         // Wrong State
-        state === 'wrong' && 'border-red-500 bg-red-50 text-red-700',
+        state === 'wrong' && 'border-red-500 bg-red-50 text-red-900',
         className
       )}
       disabled={isDisabled} // Disable interaction after judgement
@@ -83,32 +77,33 @@ export function AnswerButton({
       {shortcut && (
         <span
           className={cn(
-            'mr-4 flex h-8 w-8 items-center justify-center rounded-lg border text-sm font-bold transition-colors',
+            'mr-3 flex h-7 w-7 items-center justify-center rounded-lg border text-xs font-bold transition-colors sm:mr-4 sm:h-8 sm:w-8 sm:text-sm',
             state === 'idle' &&
               (gStyle
-                ? `border-zinc-200 text-zinc-400 ${gStyle.badge}`
-                : 'border-zinc-200 text-zinc-400'),
+                ? `border-border text-muted-foreground ${gStyle.badge}`
+                : 'border-border text-muted-foreground'),
             state === 'selected' &&
               (gStyle
                 ? `border-transparent ${gStyle.selected}`
-                : 'border-primary text-primary'),
+                : 'border-primary bg-primary/10 text-foreground'),
             state === 'correct' &&
-              'border-green-500 border-transparent bg-green-500 text-white',
-            state === 'wrong' &&
-              'border-red-500 border-transparent bg-red-500 text-white'
+              'border-transparent bg-emerald-500 text-white',
+            state === 'wrong' && 'border-transparent bg-red-500 text-white'
           )}
         >
           {shortcut}
         </span>
       )}
 
-      <span className="flex-1">{children}</span>
+      <span className="min-w-0 flex-1 text-sm leading-snug break-words sm:text-base">
+        {children}
+      </span>
 
       {/* Status Icons */}
       <div className="ml-4">
         {state === 'correct' && (
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-            <Check className="h-6 w-6 text-green-600" />
+            <Check className="h-6 w-6 text-emerald-600" />
           </motion.div>
         )}
         {state === 'wrong' && (

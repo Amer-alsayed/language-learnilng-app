@@ -1,0 +1,362 @@
+{
+  "$schema": "../schema.json",
+  "title": "Alphabet & Letter Names",
+  "description": "Learn the German alphabet (اسم الحروف) with clear examples and Arabic meanings.",
+  "order": 1,
+  "lessons": [
+    {
+      "title": "Alphabet A–F",
+      "order": 1,
+      "content": {
+        "passingScore": 0.8,
+        "exercises": [
+          {
+            "id": "f279d1dd-6c93-4567-a1a6-2ab89c1bd5bf",
+            "type": "match_pairs",
+            "prompt": "Match each letter to its German pronunciation (اسم الحرف)",
+            "pairs": [
+              {
+                "left": "A",
+                "right": "ah"
+              },
+              {
+                "left": "B",
+                "right": "bay"
+              },
+              {
+                "left": "C",
+                "right": "tsay"
+              },
+              {
+                "left": "D",
+                "right": "day"
+              },
+              {
+                "left": "E",
+                "right": "ay"
+              },
+              {
+                "left": "F",
+                "right": "eff"
+              }
+            ]
+          },
+          {
+            "id": "c248204b-663f-4e09-96a5-f0638534ef44",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"tsay\"?",
+            "options": ["B", "A", "C", "D"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "749b76d5-e585-4119-8d0b-e1229a19fafd",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with the letter \"D\"?",
+            "options": ["Ball", "Apfel", "Dorf", "Computer"],
+            "correctOptionIndex": 2,
+            "explanation": "Correct: \"Dorf\" starts with D."
+          },
+          {
+            "id": "a5fb13fa-8da6-40f5-9b6d-e4d9daec02b1",
+            "type": "typing",
+            "prompt": "Type the German word for \"فيل\" (starts with E).",
+            "correctAnswer": "Elefant"
+          },
+          {
+            "id": "4e410318-404f-481f-8c9a-873ba0655740",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct pronunciation (اسم الحرف) for the letter shown: A",
+            "options": ["bay", "tsay", "ah", "day"],
+            "correctOptionIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "title": "Alphabet G–L",
+      "order": 2,
+      "content": {
+        "passingScore": 0.8,
+        "exercises": [
+          {
+            "id": "bf1ce323-e0a8-4c90-a798-551bc414c214",
+            "type": "match_pairs",
+            "prompt": "Match each letter to its German pronunciation (اسم الحرف)",
+            "pairs": [
+              {
+                "left": "G",
+                "right": "gee"
+              },
+              {
+                "left": "H",
+                "right": "hah"
+              },
+              {
+                "left": "I",
+                "right": "ee"
+              },
+              {
+                "left": "J",
+                "right": "yot"
+              },
+              {
+                "left": "K",
+                "right": "kah"
+              },
+              {
+                "left": "L",
+                "right": "ell"
+              }
+            ]
+          },
+          {
+            "id": "77533f65-2db7-48f9-801a-3f9eaee9cfb0",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"ee\"?",
+            "options": ["B", "C", "I", "A"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "c8dac57d-0ebe-4518-a205-632659fadd28",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with the letter \"J\"?",
+            "options": ["Apfel", "Computer", "Ball", "Jacke"],
+            "correctOptionIndex": 3,
+            "explanation": "Correct: \"Jacke\" starts with J."
+          },
+          {
+            "id": "02b886c2-d20e-4fd1-8ec1-fcf0e9f617c1",
+            "type": "typing",
+            "prompt": "Type the German word for \"طفل\" (starts with K).",
+            "correctAnswer": "Kind"
+          },
+          {
+            "id": "1e062063-e1f7-433f-8fb0-5e4dced84125",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct pronunciation (اسم الحرف) for the letter shown: G",
+            "options": ["tsay", "ah", "gee", "bay"],
+            "correctOptionIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "title": "Alphabet M–R",
+      "order": 3,
+      "content": {
+        "passingScore": 0.8,
+        "exercises": [
+          {
+            "id": "5eeaaa56-942e-44fc-b325-4f0955788460",
+            "type": "match_pairs",
+            "prompt": "Match each letter to its German pronunciation (اسم الحرف)",
+            "pairs": [
+              {
+                "left": "M",
+                "right": "em"
+              },
+              {
+                "left": "N",
+                "right": "en"
+              },
+              {
+                "left": "O",
+                "right": "oh"
+              },
+              {
+                "left": "P",
+                "right": "pay"
+              },
+              {
+                "left": "Q",
+                "right": "koo"
+              },
+              {
+                "left": "R",
+                "right": "air"
+              }
+            ]
+          },
+          {
+            "id": "c8e5c17d-0251-48f3-96a7-f1d5c19f1b9b",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"oh\"?",
+            "options": ["O", "B", "A", "C"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "ea0a2f96-76a4-4542-91f7-f6e01ac5e348",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with the letter \"P\"?",
+            "options": ["Ball", "Computer", "Apfel", "Papier"],
+            "correctOptionIndex": 3,
+            "explanation": "Correct: \"Papier\" starts with P."
+          },
+          {
+            "id": "52f057b7-27de-48e3-beac-b3578abdfeed",
+            "type": "typing",
+            "prompt": "Type the German word for \"مصدر\" (starts with Q).",
+            "correctAnswer": "Quelle"
+          },
+          {
+            "id": "5601f1ba-f9e8-4aa2-a30b-a98c6566ee05",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct pronunciation (اسم الحرف) for the letter shown: M",
+            "options": ["em", "tsay", "ah", "bay"],
+            "correctOptionIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "title": "Alphabet S–Z",
+      "order": 4,
+      "content": {
+        "passingScore": 0.8,
+        "exercises": [
+          {
+            "id": "2e5e5fb8-6ed3-441c-9a1d-a5c072d85d25",
+            "type": "match_pairs",
+            "prompt": "Match each letter to its German pronunciation (اسم الحرف)",
+            "pairs": [
+              {
+                "left": "S",
+                "right": "ess"
+              },
+              {
+                "left": "T",
+                "right": "tay"
+              },
+              {
+                "left": "U",
+                "right": "oo"
+              },
+              {
+                "left": "V",
+                "right": "fow"
+              },
+              {
+                "left": "W",
+                "right": "vay"
+              },
+              {
+                "left": "X",
+                "right": "iks"
+              },
+              {
+                "left": "Y",
+                "right": "ypsilon"
+              },
+              {
+                "left": "Z",
+                "right": "tset"
+              }
+            ]
+          },
+          {
+            "id": "a9ece07a-1f1f-4a86-8c82-88f3ef01178d",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"oo\"?",
+            "options": ["A", "C", "U", "B"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "edc53fc6-c583-4b62-b1d4-de43f486e3a5",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with the letter \"V\"?",
+            "options": ["Computer", "Ball", "Apfel", "Vogel"],
+            "correctOptionIndex": 3,
+            "explanation": "Correct: \"Vogel\" starts with V."
+          },
+          {
+            "id": "208635db-4a5e-4641-b352-869e7e28e783",
+            "type": "typing",
+            "prompt": "Type the German word for \"ماء\" (starts with W).",
+            "correctAnswer": "Wasser"
+          },
+          {
+            "id": "d12359e7-c6bb-43ff-aada-09c83c493e94",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct pronunciation (اسم الحرف) for the letter shown: S",
+            "options": ["bay", "tsay", "ess", "ah"],
+            "correctOptionIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "title": "Review Quiz: Whole Alphabet",
+      "order": 5,
+      "content": {
+        "exercises": [
+          {
+            "id": "3c0f46be-e503-497a-81ec-e6eca19a20e9",
+            "type": "match_pairs",
+            "prompt": "Match the letter to the example word",
+            "pairs": [
+              {
+                "left": "A",
+                "right": "Apfel"
+              },
+              {
+                "left": "B",
+                "right": "Ball"
+              },
+              {
+                "left": "C",
+                "right": "Computer"
+              },
+              {
+                "left": "D",
+                "right": "Dorf"
+              },
+              {
+                "left": "E",
+                "right": "Elefant"
+              },
+              {
+                "left": "F",
+                "right": "Fisch"
+              },
+              {
+                "left": "G",
+                "right": "Garten"
+              },
+              {
+                "left": "H",
+                "right": "Haus"
+              }
+            ]
+          },
+          {
+            "id": "0c3797db-ee81-4421-b1ab-377b173522db",
+            "type": "multiple_choice",
+            "prompt": "Which letter is pronounced \"tset\"?",
+            "options": ["X", "S", "C", "Z"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "2742fe0d-823e-4a98-abdf-b90bd3d87e4e",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with the letter \"W\"?",
+            "options": ["Wasser", "Uhr", "Rose", "Vogel"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "8e73c913-2750-4b53-87a9-4562abcfea56",
+            "type": "typing",
+            "prompt": "Type the German word for \"ساعة\"",
+            "correctAnswer": "Uhr"
+          },
+          {
+            "id": "e32da376-9fc0-4fe2-9b00-1824f58322af",
+            "type": "multiple_choice",
+            "prompt": "Which letter starts the word \"Quelle\" (مصدر)?",
+            "options": ["B", "Q", "C", "A"],
+            "correctOptionIndex": 1
+          }
+        ]
+      }
+    }
+  ]
+}

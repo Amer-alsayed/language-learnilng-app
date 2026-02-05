@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/refs */
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLessonStore } from '@/lib/stores/use-lesson-store'
 import { LessonHeader } from './LessonHeader'
 import { LessonFooter } from './LessonFooter'
@@ -12,6 +13,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { useLessonSounds } from '@/hooks/use-lesson-sounds'
 import { triggerConfetti } from '@/lib/confetti'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface LessonShellProps {
   initialExercises: Exercise[]
@@ -20,6 +22,14 @@ interface LessonShellProps {
 
 export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
   const router = useRouter()
+  const queryClient = useQueryClient()
+  const [isExiting, setIsExiting] = useState(false)
+  const didInitializeRef = useRef(false)
+  const didMountRef = useRef(false)
+  const didCompleteSideEffectRef = useRef(false)
+  const prevStatusRef = useRef<
+    'idle' | 'active' | 'feedback' | 'finished' | 'failed'
+  >('idle')
   const {
     initialize,
     exercises,
@@ -27,19 +37,57 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
     status,
     hearts,
     lastFeedback,
+    sessionLessonId,
+    draftAnswer,
+    submitAnswer,
     continue: next,
   } = useLessonStore()
 
   useLessonSounds()
 
+  // Invalidate dashboard cache and navigate
+  const handleBackToDashboard = () => {
+    try {
+      sessionStorage.setItem('dashboardLastLessonId', lessonId)
+      if (status === 'finished') {
+        sessionStorage.setItem('dashboardJustCompletedLessonId', lessonId)
+      }
+    } catch {}
+    queryClient.invalidateQueries({ queryKey: ['lessons'] })
+    router.push('/dashboard')
+  }
+
+  const handleExit = () => {
+    if (isExiting) return
+    setIsExiting(true)
+    setTimeout(() => {
+      handleBackToDashboard()
+    }, 180)
+  }
+
   // Initialize store on mount
   useEffect(() => {
-    initialize(initialExercises)
-  }, [initialExercises, initialize])
+    // React Strict Mode (dev) intentionally re-runs effects; guard to avoid
+    // resetting progress and making the first exercise appear twice.
+    if (didInitializeRef.current) return
+    didInitializeRef.current = true
+    initialize(initialExercises, lessonId)
+  }, [initialExercises, initialize, lessonId])
 
   // Handle Completion Side Effect
   useEffect(() => {
+    const prevStatus = prevStatusRef.current
+    prevStatusRef.current = status
+
+    if (!didMountRef.current) {
+      didMountRef.current = true
+      return
+    }
     if (status === 'finished') {
+      if (prevStatus === 'finished') return
+      if (didCompleteSideEffectRef.current) return
+      didCompleteSideEffectRef.current = true
+      if (sessionLessonId !== lessonId) return
       triggerConfetti()
 
       // Calculate Stars (Simple Logic for now)
@@ -50,9 +98,58 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
 
       submitLessonResult(lessonId, stars).catch((err) => console.error(err))
     }
-  }, [status, lessonId, hearts])
+  }, [status, lessonId, hearts, sessionLessonId])
 
   const currentExercise = exercises[currentIndex]
+
+  const canSubmit =
+    status === 'active' &&
+    draftAnswer !== null &&
+    draftAnswer !== undefined &&
+    !(Array.isArray(draftAnswer) && draftAnswer.length === 0) &&
+    !(typeof draftAnswer === 'string' && draftAnswer.trim().length === 0)
+
+  useEffect(() => {
+    if (status !== 'active') return
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Enter') return
+      if (e.repeat) return
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+
+      // If user wants a newline in a textarea, allow Shift+Enter.
+      if (e.shiftKey) return
+
+      // If focus is inside an input/textarea, we still want Enter to submit,
+      // but we must prevent newline/submit glitches.
+      const target = e.target as HTMLElement | null
+      const tag = target?.tagName?.toLowerCase()
+      if (tag === 'textarea' || tag === 'input') {
+        e.preventDefault()
+      }
+
+      if (!canSubmit) return
+      submitAnswer()
+    }
+
+    window.addEventListener('keydown', onKeyDown, { passive: false })
+    return () =>
+      window.removeEventListener('keydown', onKeyDown as EventListener)
+  }, [status, canSubmit, submitAnswer])
+
+  // If the global store still has state from another lesson, avoid flashing
+  // the previous "finished" UI while this lesson initializes.
+  if (
+    !didInitializeRef.current &&
+    sessionLessonId !== null &&
+    sessionLessonId !== lessonId
+  ) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        Loading...
+      </div>
+    )
+  }
 
   if (!currentExercise && status !== 'finished' && status !== 'failed') {
     return (
@@ -69,14 +166,14 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
           <h1 className="font-heading text-4xl font-bold text-yellow-500">
             Lesson Complete!
           </h1>
-          <p className="font-medium text-zinc-500">
+          <p className="text-muted-foreground font-medium">
             You experienced +{hearts >= 5 ? 30 : hearts >= 3 ? 20 : 10} XP
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid w-full grid-cols-2 gap-4">
-          <div className="flex flex-col items-center rounded-2xl border-2 border-zinc-100 bg-zinc-50 p-4">
+          <div className="border-border bg-card flex flex-col items-center rounded-2xl border p-4 shadow-sm">
             <span className="text-3xl font-bold text-yellow-500">
               {hearts === 5
                 ? '100'
@@ -89,13 +186,13 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
                       : '40'}
               %
             </span>
-            <span className="mt-1 text-xs font-bold tracking-wide text-zinc-400 uppercase">
+            <span className="text-muted-foreground mt-1 text-xs font-bold tracking-wide uppercase">
               Accuracy
             </span>
           </div>
-          <div className="flex flex-col items-center rounded-2xl border-2 border-zinc-100 bg-zinc-50 p-4">
+          <div className="border-border bg-card flex flex-col items-center rounded-2xl border p-4 shadow-sm">
             <span className="text-3xl font-bold text-blue-500">{hearts}</span>
-            <span className="mt-1 text-xs font-bold tracking-wide text-zinc-400 uppercase">
+            <span className="text-muted-foreground mt-1 text-xs font-bold tracking-wide uppercase">
               Lives Left
             </span>
           </div>
@@ -109,7 +206,7 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: i * 0.2, type: 'spring' }}
-              className={`flex h-16 w-16 items-center justify-center rounded-2xl border-b-4 ${i <= (hearts >= 5 ? 3 : hearts >= 3 ? 2 : 1) ? 'border-yellow-600 bg-yellow-400' : 'border-zinc-300 bg-zinc-200'} shadow-sm`}
+              className={`flex h-16 w-16 items-center justify-center rounded-2xl border-b-4 ${i <= (hearts >= 5 ? 3 : hearts >= 3 ? 2 : 1) ? 'border-yellow-600 bg-yellow-400' : 'border-border bg-muted'} shadow-[0_12px_30px_-22px_rgba(15,23,42,0.18)]`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +231,7 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
         </div>
 
         <Button
-          onClick={() => router.push('/dashboard')}
+          onClick={handleBackToDashboard}
           size="lg"
           className="w-full font-bold tracking-wide"
         >
@@ -148,7 +245,7 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
     return (
       <div className="animate-in zoom-in-50 flex h-screen flex-col items-center justify-center space-y-6 p-8 text-center">
         <h1 className="text-4xl font-bold text-red-500">Game Over</h1>
-        <p className="text-xl text-zinc-600">
+        <p className="text-muted-foreground text-xl">
           Don&apos;t give up! Review and try again.
         </p>
         <Button
@@ -159,7 +256,7 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
           Try Again
         </Button>
         <Button
-          onClick={() => router.push('/dashboard')}
+          onClick={handleBackToDashboard}
           variant="ghost"
           className="w-full max-w-xs"
         >
@@ -170,10 +267,16 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <LessonHeader />
+    <motion.div
+      className="bg-background text-foreground flex h-[100dvh] flex-col overflow-hidden"
+      initial={false}
+      animate={isExiting ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
+      style={{ pointerEvents: isExiting ? 'none' : undefined }}
+    >
+      <LessonHeader onExit={handleExit} />
 
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center overflow-hidden px-4 pt-20 pb-32">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center overflow-y-auto overscroll-contain px-3 pt-14 pb-20 sm:px-4 sm:pt-20 sm:pb-28">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentIndex}
@@ -206,6 +309,6 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
         onNext={next}
         onOpenChange={() => {}} // Controlled by store
       />
-    </div>
+    </motion.div>
   )
 }

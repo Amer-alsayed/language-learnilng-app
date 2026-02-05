@@ -12,6 +12,7 @@ interface LessonSessionStats {
 interface LessonState {
   // Static Data
   exercises: Exercise[]
+  sessionLessonId: string | null
 
   // Dynamic State
   status: 'idle' | 'active' | 'feedback' | 'finished' | 'failed'
@@ -31,7 +32,7 @@ interface LessonState {
   stats: LessonSessionStats
 
   // Actions
-  initialize: (exercises: Exercise[]) => void
+  initialize: (exercises: Exercise[], lessonId: string) => void
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setDraftAnswer: (answer: any) => void
   submitAnswer: () => void // No arg needed now, uses draftAnswer
@@ -41,6 +42,7 @@ interface LessonState {
 export const useLessonStore = create<LessonState>((set, get) => ({
   // Defaults
   exercises: [],
+  sessionLessonId: null,
   status: 'idle',
   currentIndex: 0,
   hearts: 5,
@@ -54,14 +56,16 @@ export const useLessonStore = create<LessonState>((set, get) => ({
     startTime: Date.now(),
   },
 
-  initialize: (exercises) => {
+  initialize: (exercises, lessonId) => {
     set({
       exercises,
+      sessionLessonId: lessonId,
       status: 'active',
       currentIndex: 0,
       hearts: 5,
       combo: 0,
       maxCombo: 0,
+      draftAnswer: null,
       lastFeedback: null,
       stats: {
         correctCount: 0,

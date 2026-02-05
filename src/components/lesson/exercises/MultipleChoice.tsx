@@ -3,6 +3,7 @@ import { MultipleChoice as MultipleChoiceType } from '@/types/schemas'
 import { AnswerButton } from '@/components/ui/answer-button'
 import { useLessonStore } from '@/lib/stores/use-lesson-store'
 import { useEffect } from 'react'
+import { cn } from '@/lib/utils'
 
 export function MultipleChoice({ exercise }: { exercise: MultipleChoiceType }) {
   const { setDraftAnswer, draftAnswer, status, lastFeedback } = useLessonStore()
@@ -24,12 +25,19 @@ export function MultipleChoice({ exercise }: { exercise: MultipleChoiceType }) {
   }, [status, exercise.options.length, setDraftAnswer])
 
   return (
-    <div className="mx-auto mt-4 flex w-full max-w-2xl flex-col gap-8 px-4 sm:mt-8">
-      <h2 className="font-heading text-center text-2xl leading-tight font-bold text-zinc-800 sm:text-3xl">
+    <div className="mx-auto mt-2 flex w-full max-w-2xl flex-col gap-6 px-0 sm:mt-6 sm:gap-8">
+      <h2 className="font-heading text-foreground text-center text-xl leading-tight font-extrabold sm:text-3xl">
         {exercise.prompt}
       </h2>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4">
+      <div
+        className={cn(
+          'grid gap-2 sm:gap-4',
+          exercise.options.length >= 6 ? 'grid-cols-2' : 'grid-cols-1',
+          exercise.options.length >= 8 &&
+            'max-h-[46vh] overflow-y-auto pr-1 [-webkit-overflow-scrolling:touch]'
+        )}
+      >
         {exercise.options.map((option, index) => {
           const isSelected = draftAnswer === index
           let state: 'idle' | 'selected' | 'correct' | 'wrong' = 'idle'

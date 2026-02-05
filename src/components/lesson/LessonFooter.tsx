@@ -17,10 +17,11 @@ export function LessonFooter() {
     (typeof draftAnswer === 'string' && draftAnswer.trim().length === 0)
 
   return (
-    <div className="animate-in slide-in-from-bottom-4 fixed right-0 bottom-0 left-0 z-40 border-t border-zinc-100 bg-white p-4 pb-6 duration-200 sm:pb-8">
+    <div className="animate-in slide-in-from-bottom-4 border-border bg-background/80 supports-[backdrop-filter]:bg-background/70 fixed right-0 bottom-0 left-0 z-40 border-t p-4 pb-6 backdrop-blur duration-200 sm:pb-8">
       <div className="mx-auto w-full max-w-3xl">
         <Button
-          className="h-12 w-full bg-green-500 text-lg font-bold tracking-wide text-white uppercase shadow-lg shadow-green-200/50 transition-all hover:bg-green-600 active:scale-[0.98] disabled:opacity-50 disabled:shadow-none"
+          size="lg"
+          className="h-12 w-full text-base font-extrabold tracking-wide uppercase shadow-[0_12px_30px_-22px_rgba(15,23,42,0.25)] transition-transform active:scale-[0.99] disabled:opacity-60 disabled:shadow-none"
           disabled={isDisabled}
           onClick={() => submitAnswer()}
         >

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Nunito, Inter } from 'next/font/google'
+import { Nunito, Inter, Fredoka } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/providers'
 
@@ -15,8 +15,14 @@ const inter = Inter({
   display: 'swap',
 })
 
+const fredoka = Fredoka({
+  variable: '--font-fredoka',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export const viewport: Viewport = {
-  themeColor: '#030712',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -73,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunito.variable} ${inter.variable} font-body antialiased`}
+        className={`${nunito.variable} ${inter.variable} ${fredoka.variable} bg-background text-foreground font-body overflow-x-hidden antialiased`}
       >
         <Providers>{children}</Providers>
       </body>

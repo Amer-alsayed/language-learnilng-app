@@ -1,0 +1,235 @@
+{
+  "$schema": "../schema.json",
+  "title": "Pronunciation Rules & Common Mistakes",
+  "description": "Train your ear: b/d/g at the end, S vs Z, V vs W, and ei vs ie.",
+  "order": 4,
+  "lessons": [
+    {
+      "title": "End Devoicing: b / d / g",
+      "order": 1,
+      "content": {
+        "exercises": [
+          {
+            "id": "a493937a-9b74-4ba5-9433-1cdc7f2f54c2",
+            "type": "multiple_choice",
+            "prompt": "At the end of a word, \"d\" is pronounced like:",
+            "options": ["z", "th", "d", "t"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "06502f05-038e-4c77-b3f7-ef3e83fcc1a2",
+            "type": "multiple_choice",
+            "prompt": "At the end of a word, \"g\" often sounds like:",
+            "options": ["ch", "j", "k", "g"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "92d40746-1034-49d6-91c5-ef499023beda",
+            "type": "multiple_choice",
+            "prompt": "Which spelling is correct even if you hear \"Tak\"?",
+            "options": ["Tach", "Tag", "Takk", "Tak"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "7d7c1360-be16-4960-8741-429e5143365d",
+            "type": "typing",
+            "prompt": "Type the correct spelling: \"day\" in German (sounds like \"Tak\")",
+            "correctAnswer": "Tag"
+          },
+          {
+            "id": "2a712479-d274-446a-8f82-c091b6e9f664",
+            "type": "multiple_choice",
+            "prompt": "Tip: To check the real letter at the end, look at:",
+            "options": [
+              "the first letter",
+              "the plural form (e.g., Tage)",
+              "the last vowel",
+              "the Arabic translation"
+            ],
+            "correctOptionIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "title": "S vs Z",
+      "order": 2,
+      "content": {
+        "exercises": [
+          {
+            "id": "2cc82751-f5ac-403e-a7e9-4eba40e0f13f",
+            "type": "multiple_choice",
+            "prompt": "In German, Z is always pronounced:",
+            "options": ["z", "ts", "sh", "s"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "a11549ac-4459-4d11-90cd-1cdb4dc6aa27",
+            "type": "multiple_choice",
+            "prompt": "Which word starts with voiced S (like \"z\" sound)?",
+            "options": ["Tür", "Katze", "Sonne", "Zebra"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "f21f177e-5316-43c9-8790-3db7705c0128",
+            "type": "multiple_choice",
+            "prompt": "Which spelling matches the sound \"tsait\"?",
+            "options": ["Zait", "Zeit", "Seit", "Sait"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "e7c7dc94-6148-4ece-ba36-f596c6799d08",
+            "type": "match_pairs",
+            "prompt": "Match the letter to the sound",
+            "pairs": [
+              {
+                "left": "S (start + vowel)",
+                "right": "voiced (like z)"
+              },
+              {
+                "left": "S (end)",
+                "right": "voiceless (sharp s)"
+              },
+              {
+                "left": "Z",
+                "right": "ts"
+              }
+            ]
+          },
+          {
+            "id": "19b44bc1-e102-4797-8918-5069e1f277a4",
+            "type": "typing",
+            "prompt": "Type the German word for \"sun\" (شمس)",
+            "correctAnswer": "Sonne"
+          }
+        ]
+      }
+    },
+    {
+      "title": "V vs W",
+      "order": 3,
+      "content": {
+        "exercises": [
+          {
+            "id": "18f4a667-6d59-447e-96c0-bf1f8bc636be",
+            "type": "multiple_choice",
+            "prompt": "W is pronounced like English:",
+            "options": ["v", "f", "w", "b"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "a92b63da-be1a-44d6-bf6d-e1107ff7771e",
+            "type": "multiple_choice",
+            "prompt": "V is usually pronounced like:",
+            "options": ["z", "v", "f", "w"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "feac3383-cd71-4a75-bb6b-a1958c8ed32b",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling (don’t write Fogel):",
+            "options": ["Vogel", "Vogell", "Fogel", "Wogel"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "46912c48-8887-4ac4-892b-ae94d72cb709",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Waser", "Vasser", "Wasser"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "15541827-6684-40ab-9b54-e53088706ed4",
+            "type": "typing",
+            "prompt": "Type the German word: \"ماء\"",
+            "correctAnswer": "Wasser"
+          }
+        ]
+      }
+    },
+    {
+      "title": "ei vs ie",
+      "order": 4,
+      "content": {
+        "exercises": [
+          {
+            "id": "335daeee-2d5d-42a5-92b6-3e0dbd5c95e2",
+            "type": "multiple_choice",
+            "prompt": "ei sounds like:",
+            "options": ["ee", "ow", "ay", "eye"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "65ad2007-2d50-4cbc-a4fb-a549c94b435a",
+            "type": "multiple_choice",
+            "prompt": "ie sounds like:",
+            "options": ["ee", "ow", "eye", "oy"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "7791506d-25c3-4bcd-a06f-1e09b2dc16eb",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"love\" (حب)",
+            "options": ["Liebee", "Leibe", "Liebe", "Libee"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "3e8f3aa8-769a-4149-b84d-5a7d95bcd8d9",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"my\"",
+            "options": ["miener", "mien", "meien", "mein"],
+            "correctOptionIndex": 3
+          },
+          {
+            "id": "bc5269c7-dd8c-49d2-b5f9-7c58db73fa0e",
+            "type": "typing",
+            "prompt": "Type the German word: \"حب\"",
+            "correctAnswer": "Liebe"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Mixed Test: Spelling & Pronunciation",
+      "order": 5,
+      "content": {
+        "exercises": [
+          {
+            "id": "82ac7e9d-c29b-43ee-a56b-230febf2a069",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Fogel", "Vogel", "Wogel"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "395285f8-2d19-47ac-8581-c9a2759e34a2",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Seit", "Zeit", "Zait"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "eb125f1f-f36e-4a50-acb8-9d15639636ac",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Takk", "Tag", "Tak"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "36bdf869-83e5-4ea3-bc3d-308361088b11",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Leibe", "Liebe", "Libee"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "696c0ae2-f514-4bda-8263-b127a04a16dc",
+            "type": "typing",
+            "prompt": "Type the correct spelling for \"street\" (شارع)",
+            "correctAnswer": "Straße"
+          }
+        ]
+      }
+    }
+  ]
+}

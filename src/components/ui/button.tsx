@@ -11,12 +11,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        primary:
+          'bg-primary text-primary-foreground shadow-[0_14px_30px_-22px_rgba(88,204,2,0.6)] hover:bg-primary/90 active:translate-y-[1px]',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        ghost: 'hover:bg-muted hover:text-foreground',
         glass:
-          'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white', // Glass variant
+          'bg-card/90 backdrop-blur-sm border border-border shadow-sm hover:bg-muted text-foreground', // Light glass variant
         outline:
           'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         destructive:

@@ -1,6 +1,8 @@
 'use client'
 import { Exercise } from '@/types/schemas'
+import { MatchPairs } from './exercises/MatchPairs'
 import { MultipleChoice } from './exercises/MultipleChoice'
+import { Listening } from './exercises/Listening'
 import { WordBank } from './exercises/WordBank'
 import { Typing } from './exercises/Typing'
 
@@ -14,9 +16,9 @@ export function ExerciseRenderer({ exercise }: { exercise: Exercise }) {
     case 'typing':
       return <Typing key={exercise.id} exercise={exercise} />
     case 'match_pairs':
-      return <div className="p-8 text-center">Match Pairs - Coming Soon</div>
+      return <MatchPairs key={exercise.id} exercise={exercise} />
     case 'listening':
-      return <div className="p-8 text-center">Listening - Coming Soon</div>
+      return <Listening key={exercise.id} exercise={exercise} />
 
     default:
       return (

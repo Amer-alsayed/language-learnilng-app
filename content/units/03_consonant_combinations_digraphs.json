@@ -1,0 +1,377 @@
+{
+  "$schema": "../schema.json",
+  "title": "Consonant Combinations (Digraphs)",
+  "description": "Practice ch/sch/sp/st/pf/ck/tz and other common combinations with real examples.",
+  "order": 3,
+  "lessons": [
+    {
+      "title": "ch, sch, chs",
+      "order": 1,
+      "content": {
+        "exercises": [
+          {
+            "id": "1ed9e0bb-6aa0-4b1a-953e-1268df2a404d",
+            "type": "match_pairs",
+            "prompt": "Match the spelling pattern to the sound",
+            "pairs": [
+              {
+                "left": "ch (after a/o/u)",
+                "right": "kh (strong)"
+              },
+              {
+                "left": "ch (after i/e/ä/ö/ü)",
+                "right": "soft (hissing)"
+              },
+              {
+                "left": "sch",
+                "right": "sh (shoe)"
+              },
+              {
+                "left": "chs",
+                "right": "x (iks)"
+              }
+            ]
+          },
+          {
+            "id": "c8f37a44-faa9-44f3-85fc-b9cca9a9d086",
+            "type": "match_pairs",
+            "prompt": "Match the example word to Arabic meaning",
+            "pairs": [
+              {
+                "left": "Buch",
+                "right": "كتاب"
+              },
+              {
+                "left": "ich",
+                "right": "أنا"
+              },
+              {
+                "left": "Schule",
+                "right": "مدرسة"
+              },
+              {
+                "left": "sechs",
+                "right": "ستة"
+              }
+            ]
+          },
+          {
+            "id": "532c6677-fbdd-4f2b-ae51-84575c003c9d",
+            "type": "multiple_choice",
+            "prompt": "Which spelling pattern matches the example \"Buch\"?",
+            "options": [
+              "ch (after a/o/u)",
+              "chs",
+              "sch",
+              "ch (after i/e/ä/ö/ü)"
+            ],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "c4af2afa-23d1-49d7-bf49-cb4ecc59d8ec",
+            "type": "typing",
+            "prompt": "Type the German word for \"أنا\"",
+            "correctAnswer": "ich"
+          },
+          {
+            "id": "64a5ae08-9909-4603-a5ba-7a4d059d584a",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["Buch", "sechs", "ich", "Schule"],
+            "correctOptionIndex": 3
+          }
+        ]
+      }
+    },
+    {
+      "title": "sp, st, pf, ck, tz",
+      "order": 2,
+      "content": {
+        "exercises": [
+          {
+            "id": "396e3ee9-31d5-404c-aae9-015d44e06785",
+            "type": "match_pairs",
+            "prompt": "Match the spelling pattern to the sound",
+            "pairs": [
+              {
+                "left": "sp (start)",
+                "right": "shp"
+              },
+              {
+                "left": "st (start)",
+                "right": "sht"
+              },
+              {
+                "left": "pf",
+                "right": "pf"
+              },
+              {
+                "left": "ck",
+                "right": "k (short vowel)"
+              },
+              {
+                "left": "tz",
+                "right": "ts"
+              }
+            ]
+          },
+          {
+            "id": "1e7ee22c-dd33-4116-aaa6-78e5bffe4caa",
+            "type": "match_pairs",
+            "prompt": "Match the example word to Arabic meaning",
+            "pairs": [
+              {
+                "left": "Sport",
+                "right": "رياضة"
+              },
+              {
+                "left": "Stadt",
+                "right": "مدينة"
+              },
+              {
+                "left": "Apfel",
+                "right": "تفاحة"
+              },
+              {
+                "left": "Jacke",
+                "right": "سترة"
+              },
+              {
+                "left": "Katze",
+                "right": "قطة"
+              }
+            ]
+          },
+          {
+            "id": "8399e135-24a7-42aa-9432-c1db041d4f95",
+            "type": "multiple_choice",
+            "prompt": "Which spelling pattern matches the example \"Sport\"?",
+            "options": [
+              "sp (start)",
+              "chs",
+              "ch (after a/o/u)",
+              "ch (after i/e/ä/ö/ü)"
+            ],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "3cc6962c-8bc0-4ea0-90b9-429d475d8ded",
+            "type": "typing",
+            "prompt": "Type the German word for \"مدينة\"",
+            "correctAnswer": "Stadt"
+          },
+          {
+            "id": "39cb3436-8cca-4462-be3a-c9d9b5cf53e4",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["sechs", "Apfel", "ich", "Buch"],
+            "correctOptionIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "title": "qu, ng, ph, th, dt",
+      "order": 3,
+      "content": {
+        "exercises": [
+          {
+            "id": "dbf9810e-f6cd-49a0-b1ee-c5a27d220d36",
+            "type": "match_pairs",
+            "prompt": "Match the spelling pattern to the sound",
+            "pairs": [
+              {
+                "left": "qu",
+                "right": "kv"
+              },
+              {
+                "left": "ng",
+                "right": "ng"
+              },
+              {
+                "left": "ph",
+                "right": "f"
+              },
+              {
+                "left": "th",
+                "right": "t"
+              },
+              {
+                "left": "dt",
+                "right": "t"
+              }
+            ]
+          },
+          {
+            "id": "12a601a3-44eb-4fe6-a775-deab9a4ba2cf",
+            "type": "match_pairs",
+            "prompt": "Match the example word to Arabic meaning",
+            "pairs": [
+              {
+                "left": "Quelle",
+                "right": "مصدر"
+              },
+              {
+                "left": "singen",
+                "right": "يغني"
+              },
+              {
+                "left": "Philosophie",
+                "right": "فلسفة"
+              },
+              {
+                "left": "Theater",
+                "right": "مسرح"
+              },
+              {
+                "left": "Stadt",
+                "right": "مدينة"
+              }
+            ]
+          },
+          {
+            "id": "57fba301-a98b-4e34-982c-6bb440b545cc",
+            "type": "multiple_choice",
+            "prompt": "Which spelling pattern matches the example \"Quelle\"?",
+            "options": [
+              "ch (after i/e/ä/ö/ü)",
+              "ch (after a/o/u)",
+              "qu",
+              "chs"
+            ],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "656b4c2d-1e9c-4d40-b7e7-782844d3b93b",
+            "type": "typing",
+            "prompt": "Type the German word for \"يغني\"",
+            "correctAnswer": "singen"
+          },
+          {
+            "id": "9375dedb-ce55-474c-9e4f-d7281750eb5e",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling:",
+            "options": ["ich", "sechs", "Buch", "Philosophie"],
+            "correctOptionIndex": 3
+          }
+        ]
+      }
+    },
+    {
+      "title": "Spelling Focus: ck vs k / tz vs z",
+      "order": 4,
+      "content": {
+        "exercises": [
+          {
+            "id": "f00a7969-777e-4e18-9773-2756aa41f290",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"cat\" (قطة)",
+            "options": ["Katze", "Katse", "Kattze", "Kaze"],
+            "correctOptionIndex": 0
+          },
+          {
+            "id": "52b7febb-48b3-452b-9570-b09552c97f44",
+            "type": "multiple_choice",
+            "prompt": "Choose the correct spelling for \"jacket\" (سترة)",
+            "options": ["Jakke", "Jacke", "Jace", "Jake"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "b98e98ec-6415-4066-9f53-3be6d09b7fc0",
+            "type": "multiple_choice",
+            "prompt": "Which pattern makes the vowel short?",
+            "options": ["ng", "ck", "sch", "ch"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "918f7b3c-0052-44c0-bf2f-2912c49b21fc",
+            "type": "typing",
+            "prompt": "Type the German word for \"ستة\"",
+            "correctAnswer": "sechs"
+          },
+          {
+            "id": "9a42d5c5-0e40-4416-b0a6-1fc4ad3c62d3",
+            "type": "match_pairs",
+            "prompt": "Match the pattern to the example",
+            "pairs": [
+              {
+                "left": "tz",
+                "right": "Katze"
+              },
+              {
+                "left": "ck",
+                "right": "Jacke"
+              },
+              {
+                "left": "sch",
+                "right": "Schule"
+              },
+              {
+                "left": "sp",
+                "right": "Sport"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "title": "Review Quiz: Consonant Combinations",
+      "order": 5,
+      "content": {
+        "exercises": [
+          {
+            "id": "1e71b072-7504-4c82-a9ac-d45aba8eb7cd",
+            "type": "multiple_choice",
+            "prompt": "Which pattern is pronounced \"sh\"?",
+            "options": ["st", "sp", "sch", "ch"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "854b7989-5ecf-4e16-b22c-e221e200ef7c",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"sp\" at the start?",
+            "options": ["Schule", "Sport", "Rose", "Stadt"],
+            "correctOptionIndex": 1
+          },
+          {
+            "id": "7a80ca9b-27a9-464a-b8a5-c3848366291b",
+            "type": "multiple_choice",
+            "prompt": "Which word contains \"qu\"?",
+            "options": ["Liebe", "Katze", "Quelle", "Lampe"],
+            "correctOptionIndex": 2
+          },
+          {
+            "id": "dd61b74a-1621-4247-8926-c1bdf099c528",
+            "type": "match_pairs",
+            "prompt": "Match the word to the correct pattern",
+            "pairs": [
+              {
+                "left": "Stadt",
+                "right": "st (start)"
+              },
+              {
+                "left": "Sport",
+                "right": "sp (start)"
+              },
+              {
+                "left": "Schule",
+                "right": "sch"
+              },
+              {
+                "left": "Buch",
+                "right": "ch (after a/o/u)"
+              }
+            ]
+          },
+          {
+            "id": "ab9f0ecb-37b8-40b5-bb29-4107e6bb78ad",
+            "type": "typing",
+            "prompt": "Type the German word: \"مدينة\"",
+            "correctAnswer": "Stadt"
+          }
+        ]
+      }
+    }
+  ]
+}
