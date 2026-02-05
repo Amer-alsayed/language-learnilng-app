@@ -1,10 +1,10 @@
 {
-  "$ref": "#/definitions/german-mastery-unit-scchema",
+  "$ref": "#/definitions/german-mastery-unit-schema",
   "definitions": {
-    "german-mastery-unit-scchema": {
+    "german-mastery-unit-schema": {
       "type": "object",
       "properties": {
-        "_$schema": {
+        "$schema": {
           "type": "string"
         },
         "id": {
@@ -94,13 +94,13 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
                             },
                             "prompt": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
                             },
                             "audioUrl": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
                             },
                             "type": {
                               "type": "string",
@@ -143,13 +143,13 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
                             },
                             "prompt": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
                             },
                             "audioUrl": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
                             },
                             "type": {
                               "type": "string",
@@ -174,13 +174,13 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
                             },
                             "prompt": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
                             },
                             "audioUrl": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
                             },
                             "type": {
                               "type": "string",
@@ -213,13 +213,13 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/id"
                             },
                             "prompt": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/prompt"
                             },
                             "audioUrl": {
-                              "$ref": "#/definitions/german-mastery-unit-scchema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
+                              "$ref": "#/definitions/german-mastery-unit-schema/properties/lessons/items/properties/content/properties/exercises/items/anyOf/0/properties/audioUrl"
                             },
                             "type": {
                               "type": "string",

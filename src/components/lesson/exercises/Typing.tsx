@@ -2,7 +2,7 @@
 import { Typing as TypingType } from '@/types/schemas'
 import { useLessonStore } from '@/lib/stores/use-lesson-store'
 import { cn } from '@/lib/utils'
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 
 export function Typing({ exercise }: { exercise: TypingType }) {
   const { setDraftAnswer, draftAnswer, status, lastFeedback } = useLessonStore()
@@ -26,7 +26,7 @@ export function Typing({ exercise }: { exercise: TypingType }) {
           ref={inputRef}
           value={draftAnswer || ''}
           onChange={(e) => setDraftAnswer(e.target.value)}
-          onKeyDown={(e) => {
+          onKeyDown={() => {
             // Prevent Enter from new-line, maybe submit?
             // For now just let it be.
           }}

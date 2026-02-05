@@ -10,7 +10,7 @@ async function main() {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const jsonSchema = zodToJsonSchema(UnitFileSchema as any, {
-    name: 'german-mastery-unit-scchema',
+    name: 'german-mastery-unit-schema',
     target: 'jsonSchema7', // VS Code supports Draft 7 widely
   })
 

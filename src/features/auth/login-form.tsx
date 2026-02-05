@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useActionState } from 'react'
 import { loginWithKey } from './actions'
@@ -33,8 +33,8 @@ export function LoginForm() {
 
       {state?.error && (
         <div className="animate-shake flex items-center gap-2 rounded-lg border border-red-900/50 bg-red-900/20 p-3 text-sm text-red-200">
-          <span>⚠️</span>
-          {state.error}
+          <span className="font-semibold">Error:</span>
+          <span>{state.error}</span>
         </div>
       )}
 
@@ -60,7 +60,7 @@ export function LoginForm() {
       </button>
 
       <p className="text-center text-xs text-slate-500">
-        Protected by Supabase Auth & Next.js 15
+        Protected by Supabase Auth & Next.js
       </p>
     </form>
   )

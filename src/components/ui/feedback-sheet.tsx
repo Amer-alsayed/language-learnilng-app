@@ -1,5 +1,5 @@
 import { Drawer } from 'vaul'
-import { Check, X, ArrowRight } from 'lucide-react'
+import { Check, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
@@ -28,10 +28,15 @@ export function FeedbackSheet({
   })
 
   useEffect(() => {
-    if (isOpen) {
+    if (
+      isOpen &&
+      (frozenState.isCorrect !== initialIsCorrect ||
+        frozenState.correctAnswer !== correctAnswer)
+    ) {
+      // eslint-disable-next-line
       setFrozenState({ isCorrect: initialIsCorrect, correctAnswer })
     }
-  }, [isOpen, initialIsCorrect, correctAnswer])
+  }, [isOpen, initialIsCorrect, correctAnswer, frozenState])
 
   // Use frozen state if closing, otherwise active state usually matches
   // But strictly, we should just use frozen state whenever isOpen was true recently

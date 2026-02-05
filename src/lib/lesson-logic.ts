@@ -13,25 +13,24 @@ export type ValidationResult = {
   correctAnswerDisplay?: string
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function validateAnswer(
   exercise: Exercise,
-  answer: any
+  answer: unknown
 ): ValidationResult {
   switch (exercise.type) {
     case 'multiple_choice':
-      return validateMultipleChoice(exercise, answer)
+      return validateMultipleChoice(exercise, answer as number)
     case 'word_bank':
-      return validateWordBank(exercise, answer)
+      return validateWordBank(exercise, answer as number[])
     case 'typing':
-      return validateTyping(exercise, answer)
+      return validateTyping(exercise, answer as string)
     case 'listening':
-      return validateListening(exercise, answer)
+      return validateListening(exercise, answer as string)
     case 'match_pairs':
-      return validateMatchPairs(exercise, answer)
+      return validateMatchPairs(exercise, answer as Record<string, string>)
     default:
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      throw new Error(`Unknown exercise type: ${(exercise as any).type}`)
+      const exerciseType = (exercise as { type?: string }).type ?? 'unknown'
+      throw new Error(`Unknown exercise type: ${exerciseType}`)
   }
 }
 
@@ -43,29 +42,17 @@ function validateMultipleChoice(
   return {
     isCorrect,
     correctAnswerDisplay: exercise.options[exercise.correctOptionIndex],
+    feedback: isCorrect ? undefined : exercise.explanation,
   }
 }
 
 function validateWordBank(
   exercise: WordBank,
-  answer: string[]
+  answer: number[]
 ): ValidationResult {
-  // Answer is an array of strings (the words)
-  // But wait, the schema says `correctOrder` is indices.
-  // The actual Game will likely deal with indices or the constructed string.
-  // Let's assume the UI sends the constructed sentence or the array of words chosen.
-  // If we reconstruct the sentence from indices:
+  // The UI sends indices of the selected words, which we compare to `correctOrder`.
 
-  // Actually, simpler: The user answer should be the array of *indices* they selected,
-  // OR the array of strings they built.
-  // If we compare strings, it's robust against equivalent words if unique.
-  // But `correctOrder` is indices. So let's compare indices if possible, or string.
-
-  // Let's assume the store holds the "current constructed sentence" as an array of definitions?
-  // Let's stick strictly to what the schema gives us: `correctOrder` (indices).
-  // So the answer should be `number[]`.
-
-  const userAnswerIndices = answer as unknown as number[]
+  const userAnswerIndices = answer
 
   if (userAnswerIndices.length !== exercise.correctOrder.length) {
     return { isCorrect: false, feedback: 'Sentence length is incorrect.' }

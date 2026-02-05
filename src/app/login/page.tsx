@@ -1,6 +1,13 @@
 import { LoginForm } from '@/features/auth/login-form'
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ reason?: string }>
+}) {
+  const resolvedParams = searchParams ? await searchParams : undefined
+  const isExpired = resolvedParams?.reason === 'expired'
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#030712]">
       {/* Background Ambience */}
@@ -25,6 +32,12 @@ export default function LoginPage() {
               Enter your student key to access the learning terminal.
             </p>
           </div>
+
+          {isExpired && (
+            <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">
+              Your access has expired. Please renew with your instructor.
+            </div>
+          )}
 
           <LoginForm />
         </div>

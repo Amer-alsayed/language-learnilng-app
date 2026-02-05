@@ -26,12 +26,13 @@ create table profiles (
   id uuid references auth.users not null primary key, -- 1:1 Map to Auth User
   email text not null,
   role text default 'student' check (role in ('student', 'admin')),
+  class_group text,
   xp integer default 0 check (xp >= 0),
   streak integer default 0 check (streak >= 0),
   
   -- Audit & Subscriptions
   last_active_at timestamptz default now(),
-  expires_at timestamptz,
+  expires_at timestamptz default (now() + interval '2 months'),
   created_at timestamptz default now() not null,
   updated_at timestamptz default now() not null
 );

@@ -10,7 +10,11 @@ export function LessonFooter() {
   // In 'finished', results screen takes over.
   if (status !== 'active') return null
 
-  const isDisabled = draftAnswer === null
+  const isDisabled =
+    draftAnswer === null ||
+    draftAnswer === undefined ||
+    (Array.isArray(draftAnswer) && draftAnswer.length === 0) ||
+    (typeof draftAnswer === 'string' && draftAnswer.trim().length === 0)
 
   return (
     <div className="animate-in slide-in-from-bottom-4 fixed right-0 bottom-0 left-0 z-40 border-t border-zinc-100 bg-white p-4 pb-6 duration-200 sm:pb-8">

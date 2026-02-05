@@ -46,6 +46,14 @@ export function MultipleChoice({ exercise }: { exercise: MultipleChoiceType }) {
             state = isSelected ? 'selected' : 'idle'
           }
 
+          // Determine Gender
+          // "Der Mann", "Der", "der", "die Frau"
+          const lowerOpt = option.toLowerCase().trim()
+          let gender: 'masc' | 'fem' | 'neut' | undefined
+          if (lowerOpt === 'der' || lowerOpt.startsWith('der ')) gender = 'masc'
+          if (lowerOpt === 'die' || lowerOpt.startsWith('die ')) gender = 'fem'
+          if (lowerOpt === 'das' || lowerOpt.startsWith('das ')) gender = 'neut'
+
           return (
             <AnswerButton
               key={index}
@@ -53,6 +61,7 @@ export function MultipleChoice({ exercise }: { exercise: MultipleChoiceType }) {
               state={state}
               onClick={() => status === 'active' && setDraftAnswer(index)}
               disabled={status !== 'active'}
+              gender={gender}
             >
               {option}
             </AnswerButton>

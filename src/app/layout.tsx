@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Nunito, Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/providers'
@@ -15,10 +15,26 @@ const inter = Inter({
   display: 'swap',
 })
 
+export const viewport: Viewport = {
+  themeColor: '#030712',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false, // Prevents zooming for native app feel
+}
+
 export const metadata: Metadata = {
-  title: 'German Mastery | Learn German the Smart Way',
+  title: {
+    template: '%s | German Mastery',
+    default: 'German Mastery',
+  },
   description:
     'A gamified German learning platform that syncs with your classroom lessons. Master vocabulary, grammar, and pronunciation through addictive, quiz-style exercises.',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon-192x192.png',
+    apple: '/apple-touch-icon.png',
+  },
   keywords: [
     'German',
     'language learning',
@@ -26,11 +42,26 @@ export const metadata: Metadata = {
     'gamification',
     'vocabulary',
   ],
-  authors: [{ name: 'German Mastery' }],
+  authors: [{ name: 'German Mastery Team' }],
   openGraph: {
     title: 'German Mastery',
     description: 'Master German through gamified learning',
+    url: 'https://german-mastery.vercel.app', // Placeholder
+    siteName: 'German Mastery',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'German Mastery',
   },
 }
 

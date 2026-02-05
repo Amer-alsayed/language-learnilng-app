@@ -11,11 +11,11 @@ import { submitLessonResult } from '@/features/lesson/actions'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { useLessonSounds } from '@/hooks/use-lesson-sounds'
+import { triggerConfetti } from '@/lib/confetti'
 
 interface LessonShellProps {
   initialExercises: Exercise[]
   lessonId: string
-  // User data could be passed here for sync on finish
 }
 
 export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
@@ -40,17 +40,15 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
   // Handle Completion Side Effect
   useEffect(() => {
     if (status === 'finished') {
+      triggerConfetti()
+
       // Calculate Stars (Simple Logic for now)
       // 5 hearts = 3 stars, 3-4 = 2 stars, 1-2 = 1 star
       let stars = 1
       if (hearts === 5) stars = 3
       else if (hearts >= 3) stars = 2
 
-      submitLessonResult(lessonId, stars)
-        .then(() => {
-          // Maybe play a success sound?
-        })
-        .catch((err) => console.error(err))
+      submitLessonResult(lessonId, stars).catch((err) => console.error(err))
     }
   }, [status, lessonId, hearts])
 
@@ -180,7 +178,15 @@ export function LessonShell({ initialExercises, lessonId }: LessonShellProps) {
           <motion.div
             key={currentIndex}
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={
+              // Shake if error
+              status === 'feedback' && !lastFeedback?.isCorrect
+                ? {
+                    x: [0, -10, 10, -10, 10, 0],
+                    transition: { duration: 0.4 },
+                  }
+                : { opacity: 1, x: 0 }
+            }
             exit={{ opacity: 0, x: -50, position: 'absolute' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="w-full"

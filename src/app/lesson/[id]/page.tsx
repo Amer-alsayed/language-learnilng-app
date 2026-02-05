@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { LessonShell } from '@/components/lesson/LessonShell'
 import { redirect } from 'next/navigation'
+import { LessonContentSchema } from '@/types/schemas'
 
 export default async function LessonPage({
   params,
@@ -16,6 +17,39 @@ export default async function LessonPage({
   } = await supabase.auth.getUser()
   if (!user) {
     redirect('/login')
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role, expires_at')
+    .eq('id', user.id)
+    .single()
+
+  if (profile?.expires_at && new Date(profile.expires_at) < new Date()) {
+    redirect('/login?reason=expired')
+  }
+
+  const isAdmin = profile?.role === 'admin'
+
+  if (!isAdmin) {
+    const { data: progress } = await supabase
+      .from('user_progress')
+      .select('status')
+      .eq('user_id', user.id)
+      .eq('lesson_id', id)
+      .maybeSingle()
+
+    if (!progress || progress.status === 'locked') {
+      return (
+        <div className="space-y-4 p-8 text-center">
+          <h1 className="text-xl font-bold text-zinc-900">Lesson Locked</h1>
+          <p className="text-zinc-500">
+            This lesson has not been unlocked yet. Please check with your
+            instructor.
+          </p>
+        </div>
+      )
+    }
   }
 
   // Fetch Lesson
@@ -35,9 +69,21 @@ export default async function LessonPage({
     )
   }
 
-  // Validate content shape roughly (or trust it)
-  // The 'content' column is JSONB.
-  const exercises = (lesson.content as any)?.exercises || []
+  // Validate content shape (strict Zod)
+  const contentResult = LessonContentSchema.safeParse(lesson.content)
+
+  if (!contentResult.success) {
+    return (
+      <div className="space-y-2 p-8 text-center">
+        <h1 className="text-xl font-bold text-red-500">Invalid Lesson Data</h1>
+        <p className="text-zinc-500">
+          This lesson content failed validation. Please contact support.
+        </p>
+      </div>
+    )
+  }
+
+  const exercises = contentResult.data.exercises
 
   if (exercises.length === 0) {
     return (

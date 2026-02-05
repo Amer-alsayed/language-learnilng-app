@@ -7,12 +7,12 @@ import { Typing } from './exercises/Typing'
 export function ExerciseRenderer({ exercise }: { exercise: Exercise }) {
   switch (exercise.type) {
     case 'multiple_choice':
-      return <MultipleChoice exercise={exercise} />
+      return <MultipleChoice key={exercise.id} exercise={exercise} />
 
     case 'word_bank':
-      return <WordBank exercise={exercise} />
+      return <WordBank key={exercise.id} exercise={exercise} />
     case 'typing':
-      return <Typing exercise={exercise} />
+      return <Typing key={exercise.id} exercise={exercise} />
     case 'match_pairs':
       return <div className="p-8 text-center">Match Pairs - Coming Soon</div>
     case 'listening':
@@ -21,7 +21,7 @@ export function ExerciseRenderer({ exercise }: { exercise: Exercise }) {
     default:
       return (
         <div className="rounded-lg bg-red-50 p-4 text-red-500">
-          Unknown exercise type: {(exercise as any).type}
+          Unknown exercise type: {(exercise as { type: string }).type}
         </div>
       )
   }

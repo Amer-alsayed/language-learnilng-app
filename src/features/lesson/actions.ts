@@ -25,9 +25,91 @@ export async function submitLessonResult(lessonId: string, stars: number) {
     return { error: error.message }
   }
 
+  await unlockNextLesson(supabase, user.id, lessonId)
+
   // 3. Revalidate Dashboard to show unlocked next lesson
   revalidatePath('/dashboard')
   revalidatePath(`/lesson/${lessonId}`)
 
   return { success: true }
+}
+
+async function unlockNextLesson(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  lessonId: string
+) {
+  const { data: currentLesson } = await supabase
+    .from('lessons')
+    .select('id, unit_id, order_index')
+    .eq('id', lessonId)
+    .single()
+
+  if (!currentLesson) return
+
+  const { data: nextInUnit } = await supabase
+    .from('lessons')
+    .select('id')
+    .eq('unit_id', currentLesson.unit_id)
+    .gt('order_index', currentLesson.order_index)
+    .order('order_index', { ascending: true })
+    .limit(1)
+    .maybeSingle()
+
+  let nextLessonId = nextInUnit?.id
+
+  if (!nextLessonId) {
+    const { data: currentUnit } = await supabase
+      .from('units')
+      .select('order_index')
+      .eq('id', currentLesson.unit_id)
+      .single()
+
+    if (!currentUnit) return
+
+    const { data: nextUnit } = await supabase
+      .from('units')
+      .select('id')
+      .gt('order_index', currentUnit.order_index)
+      .order('order_index', { ascending: true })
+      .limit(1)
+      .maybeSingle()
+
+    if (!nextUnit) return
+
+    const { data: firstLessonInNextUnit } = await supabase
+      .from('lessons')
+      .select('id')
+      .eq('unit_id', nextUnit.id)
+      .order('order_index', { ascending: true })
+      .limit(1)
+      .maybeSingle()
+
+    nextLessonId = firstLessonInNextUnit?.id
+  }
+
+  if (!nextLessonId) return
+
+  const { data: existing } = await supabase
+    .from('user_progress')
+    .select('status, stars')
+    .eq('user_id', userId)
+    .eq('lesson_id', nextLessonId)
+    .maybeSingle()
+
+  if (existing?.status === 'completed') return
+
+  const { error: upsertError } = await supabase.from('user_progress').upsert(
+    {
+      user_id: userId,
+      lesson_id: nextLessonId,
+      status: 'active',
+      stars: existing?.stars ?? 0,
+    },
+    { onConflict: 'user_id, lesson_id' }
+  )
+
+  if (upsertError) {
+    console.error('Unlock next lesson error:', upsertError)
+  }
 }

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export function WordBank({ exercise }: { exercise: WordBankType }) {
-  const { setDraftAnswer, draftAnswer, status, lastFeedback } = useLessonStore()
+  const { setDraftAnswer, status } = useLessonStore()
 
   // Local state for the clicked words (indices)
   const [selectedIndices, setSelectedIndices] = useState<number[]>([])
@@ -17,11 +17,6 @@ export function WordBank({ exercise }: { exercise: WordBankType }) {
       setDraftAnswer(selectedIndices)
     }
   }, [selectedIndices, setDraftAnswer, status])
-
-  // Reset when exercise changes
-  useEffect(() => {
-    setSelectedIndices([])
-  }, [exercise])
 
   const handleWordClick = (index: number) => {
     if (status !== 'active') return

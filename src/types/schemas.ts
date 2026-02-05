@@ -196,6 +196,7 @@ export interface Profile {
   id: string // UUID from Auth
   email: string
   role: 'student' | 'admin'
+  class_group?: string | null
   xp: number
   streak: number
   last_active_at: string // ISO Date String
@@ -250,7 +251,7 @@ export const LessonFileSchema = z.object({
  * The structure of a "Unit" content file (e.g. content/units/01_basics.json).
  */
 export const UnitFileSchema = z.object({
-  _$schema: z.string().optional(), // For JSON Schema binding
+  $schema: z.string().optional(), // For JSON Schema binding
   id: z.string().uuid().optional(), // Optional: If you want to force a specific UUID
   title: z.string().min(1, 'Unit title is required'),
   description: z.string().optional(),
