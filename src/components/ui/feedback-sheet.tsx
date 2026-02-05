@@ -22,7 +22,10 @@ export function FeedbackSheet({
   onOpenChange,
 }: FeedbackSheetProps) {
   // Freezing the state to prevent "Red Flash" on exit
-  const [frozenState, setFrozenState] = useState({ isCorrect: initialIsCorrect, correctAnswer })
+  const [frozenState, setFrozenState] = useState({
+    isCorrect: initialIsCorrect,
+    correctAnswer,
+  })
 
   useEffect(() => {
     if (isOpen) {
@@ -42,10 +45,10 @@ export function FeedbackSheet({
       shouldScaleBackground={false}
       // disable scaling to prevent background shifts that might reveal white lines
       modal={false}
-    // Non-modal to allow interaction? actually modal is fine, but maybe 'false' removes the overlay issue?
-    // Let's keep modal true (default) but remove the overlay?
-    // User complaint: "white line at the bottom". 
-    // Drawer content usually sits at bottom.
+      // Non-modal to allow interaction? actually modal is fine, but maybe 'false' removes the overlay issue?
+      // Let's keep modal true (default) but remove the overlay?
+      // User complaint: "white line at the bottom".
+      // Drawer content usually sits at bottom.
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px]" />
@@ -56,36 +59,51 @@ export function FeedbackSheet({
             */}
           <div
             className={cn(
-              'w-full p-6 pb-12 rounded-t-[32px] shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] transition-colors duration-300',
+              'w-full rounded-t-[32px] p-6 pb-12 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] transition-colors duration-300',
               activeIsCorrect ? 'bg-green-100' : 'bg-red-100'
             )}
           >
-            <div className="mx-auto w-full max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-
+            <div className="mx-auto flex w-full max-w-3xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
               {/* Header Section */}
               <div className="flex items-center gap-4">
-                <div className={cn(
-                  "flex items-center justify-center w-12 h-12 rounded-full shadow-sm",
-                  activeIsCorrect ? "bg-green-500 text-white" : "bg-red-500 text-white"
-                )}>
-                  {activeIsCorrect ? <Check size={28} strokeWidth={3} /> : <X size={28} strokeWidth={3} />}
+                <div
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-full shadow-sm',
+                    activeIsCorrect
+                      ? 'bg-green-500 text-white'
+                      : 'bg-red-500 text-white'
+                  )}
+                >
+                  {activeIsCorrect ? (
+                    <Check size={28} strokeWidth={3} />
+                  ) : (
+                    <X size={28} strokeWidth={3} />
+                  )}
                 </div>
                 <div className="flex flex-col">
-                  <Drawer.Title className={cn(
-                    "text-2xl font-black tracking-tight",
-                    activeIsCorrect ? "text-green-800" : "text-red-800"
-                  )}>
-                    {activeIsCorrect ? "Excellent!" : "Incorrect"}
+                  <Drawer.Title
+                    className={cn(
+                      'text-2xl font-black tracking-tight',
+                      activeIsCorrect ? 'text-green-800' : 'text-red-800'
+                    )}
+                  >
+                    {activeIsCorrect ? 'Excellent!' : 'Incorrect'}
                   </Drawer.Title>
                   {/* Show correct answer if wrong */}
                   {!activeIsCorrect && activeCorrectAnswer && (
-                    <p className="text-red-600 font-medium mt-1">
-                      Correct answer: <span className="font-bold">{activeCorrectAnswer}</span>
+                    <p className="mt-1 font-medium text-red-600">
+                      Correct answer:{' '}
+                      <span className="font-bold">{activeCorrectAnswer}</span>
                     </p>
                   )}
                   {/* Explanation */}
                   {explanation && (
-                    <p className={cn("text-base mt-1", activeIsCorrect ? "text-green-700" : "text-red-700")}>
+                    <p
+                      className={cn(
+                        'mt-1 text-base',
+                        activeIsCorrect ? 'text-green-700' : 'text-red-700'
+                      )}
+                    >
                       {explanation}
                     </p>
                   )}
@@ -96,10 +114,10 @@ export function FeedbackSheet({
               <Button
                 onClick={onNext}
                 className={cn(
-                  "w-full sm:w-auto px-8 h-14 text-lg font-bold shadow-lg transition-transform hover:scale-105 active:scale-95",
+                  'h-14 w-full px-8 text-lg font-bold shadow-lg transition-transform hover:scale-105 active:scale-95 sm:w-auto',
                   activeIsCorrect
-                    ? "bg-green-500 hover:bg-green-600 text-white shadow-green-200"
-                    : "bg-red-500 hover:bg-red-600 text-white shadow-red-200"
+                    ? 'bg-green-500 text-white shadow-green-200 hover:bg-green-600'
+                    : 'bg-red-500 text-white shadow-red-200 hover:bg-red-600'
                 )}
               >
                 Continue

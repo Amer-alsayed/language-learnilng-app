@@ -255,7 +255,9 @@ export const UnitFileSchema = z.object({
   title: z.string().min(1, 'Unit title is required'),
   description: z.string().optional(),
   order: z.number().int().min(1, 'Unit order must be >= 1'),
-  lessons: z.array(LessonFileSchema).min(1, 'A unit must have at least one lesson'),
+  lessons: z
+    .array(LessonFileSchema)
+    .min(1, 'A unit must have at least one lesson'),
 })
 
 export type UnitFile = z.infer<typeof UnitFileSchema>

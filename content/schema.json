@@ -167,12 +167,7 @@
                               }
                             }
                           },
-                          "required": [
-                            "id",
-                            "prompt",
-                            "type",
-                            "correctAnswer"
-                          ],
+                          "required": ["id", "prompt", "type", "correctAnswer"],
                           "additionalProperties": false
                         },
                         {
@@ -205,21 +200,13 @@
                                     "minLength": 1
                                   }
                                 },
-                                "required": [
-                                  "left",
-                                  "right"
-                                ],
+                                "required": ["left", "right"],
                                 "additionalProperties": false
                               },
                               "minItems": 2
                             }
                           },
-                          "required": [
-                            "id",
-                            "prompt",
-                            "type",
-                            "pairs"
-                          ],
+                          "required": ["id", "prompt", "type", "pairs"],
                           "additionalProperties": false
                         },
                         {
@@ -262,27 +249,17 @@
                     "default": 0.8
                   }
                 },
-                "required": [
-                  "exercises"
-                ],
+                "required": ["exercises"],
                 "additionalProperties": false
               }
             },
-            "required": [
-              "title",
-              "order",
-              "content"
-            ],
+            "required": ["title", "order", "content"],
             "additionalProperties": false
           },
           "minItems": 1
         }
       },
-      "required": [
-        "title",
-        "order",
-        "lessons"
-      ],
+      "required": ["title", "order", "lessons"],
       "additionalProperties": false
     }
   },

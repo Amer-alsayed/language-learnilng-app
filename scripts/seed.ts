@@ -1,4 +1,3 @@
-
 import { config as loadEnv } from 'dotenv'
 import { createClient } from '@supabase/supabase-js'
 import fs from 'node:fs/promises'
@@ -42,9 +41,10 @@ async function main() {
     process.exit(1)
   }
 
-  const client = (!isDryRun && supabaseUrl && serviceRoleKey)
-    ? createClient(supabaseUrl, serviceRoleKey)
-    : null
+  const client =
+    !isDryRun && supabaseUrl && serviceRoleKey
+      ? createClient(supabaseUrl, serviceRoleKey)
+      : null
 
   // 2. Scan Files
   const contentDir = path.resolve(process.cwd(), 'content/units')
@@ -75,11 +75,13 @@ async function main() {
 
       // 4. Validate Schema
       const unit = UnitFileSchema.parse(json)
-      console.log(`   ✅ Validated Unit: "${unit.title}" (${unit.lessons.length} lessons)`)
+      console.log(
+        `   ✅ Validated Unit: "${unit.title}" (${unit.lessons.length} lessons)`
+      )
 
       // 5. Seed to DB
       // We reuse the existing logic in src/features/admin/seed.ts
-      // But we need to adapt the unit.id. 
+      // But we need to adapt the unit.id.
       // Strategy: look up unit by 'order' or 'title' if ID is missing?
       // For Phase 2.5, let's assume we Upsert Unit by ID if present, or create new.
       // But `seedLessons` logic asks for a unitId.
@@ -91,16 +93,19 @@ async function main() {
         // Upsert Unit
         const { data, error } = await client
           .from('units')
-          .upsert({
-            // If id is provided, use it. If not, maybe we should slugify title? 
-            // Or let DB generate? If DB generates, we can't idempotently seed easily without a stable key.
-            // RECOMMENDATION: Use 'order_index' as a stable lookup or require ID.
-            // Let's use order_index to find existing unit, else insert.
-            title: unit.title,
-            order_index: unit.order,
-            description: unit.description,
-            ...(unitId ? { id: unitId } : {})
-          }, { onConflict: 'order_index' }) // Assume order_index is unique
+          .upsert(
+            {
+              // If id is provided, use it. If not, maybe we should slugify title?
+              // Or let DB generate? If DB generates, we can't idempotently seed easily without a stable key.
+              // RECOMMENDATION: Use 'order_index' as a stable lookup or require ID.
+              // Let's use order_index to find existing unit, else insert.
+              title: unit.title,
+              order_index: unit.order,
+              description: unit.description,
+              ...(unitId ? { id: unitId } : {}),
+            },
+            { onConflict: 'order_index' }
+          ) // Assume order_index is unique
           .select()
           .single()
 
@@ -113,18 +118,19 @@ async function main() {
       // 6. Seed Lessons
       await seedLessons(client, {
         unitId: unitId!,
-        items: unit.lessons.map(l => ({
+        items: unit.lessons.map((l) => ({
           title: l.title,
           orderIndex: l.order,
-          content: l.content
+          content: l.content,
         })),
-        dryRun: isDryRun
+        dryRun: isDryRun,
       })
-
     } catch (err) {
       console.error(`   ❌ Error in ${relativeName}:`)
       if (err instanceof ZodError) {
-        err.issues.forEach(i => console.error(`      - [${i.path.join('.')}] ${i.message}`))
+        err.issues.forEach((i) =>
+          console.error(`      - [${i.path.join('.')}] ${i.message}`)
+        )
       } else if (err instanceof SyntaxError) {
         console.error(`      - Invalid JSON syntax`)
       } else {

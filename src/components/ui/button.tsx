@@ -38,8 +38,8 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends
-  Omit<HTMLMotionProps<'button'>, 'ref'>,
-  VariantProps<typeof buttonVariants> {
+    Omit<HTMLMotionProps<'button'>, 'ref'>,
+    VariantProps<typeof buttonVariants> {
   isLoading?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
