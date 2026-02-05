@@ -1,0 +1,118 @@
+{
+    "$schema": "../schema.json",
+    "title": "Unit Template: All Exercise Types",
+    "description": "This is a reference template. Use this to copy-paste examples.",
+    "order": 1,
+    "lessons": [
+        {
+            "title": "Multiple Choice Example",
+            "order": 1,
+            "content": {
+                "introVideoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                "passingScore": 0.8,
+                "exercises": [
+                    {
+                        "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+                        "type": "multiple_choice",
+                        "prompt": "What is the capital of Germany?",
+                        "options": [
+                            "Paris",
+                            "London",
+                            "Berlin",
+                            "Munich"
+                        ],
+                        "correctOptionIndex": 2,
+                        "explanation": "Berlin is the capital and largest city of Germany."
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Word Bank Example",
+            "order": 2,
+            "content": {
+                "exercises": [
+                    {
+                        "id": "b1eebc99-9c0b-4ef8-bb6d-6bb9bd380a12",
+                        "type": "word_bank",
+                        "prompt": "Translate: 'I drink coffee'",
+                        "sentenceParts": [
+                            "Ich",
+                            "trinke",
+                            "Kaffee"
+                        ],
+                        "correctOrder": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "distractors": [
+                            "Wasser",
+                            "Milch"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Typing Example",
+            "order": 3,
+            "content": {
+                "exercises": [
+                    {
+                        "id": "c2eebc99-9c0b-4ef8-bb6d-6bb9bd380a13",
+                        "type": "typing",
+                        "prompt": "Type 'Thank you' in German",
+                        "correctAnswer": "Danke",
+                        "acceptableAnswers": [
+                            "Dankeschön",
+                            "Vielen Dank"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Match Pairs Example",
+            "order": 4,
+            "content": {
+                "exercises": [
+                    {
+                        "id": "d3eebc99-9c0b-4ef8-bb6d-6bb9bd380a14",
+                        "type": "match_pairs",
+                        "prompt": "Match the greetings",
+                        "pairs": [
+                            {
+                                "left": "Hallo",
+                                "right": "Hello"
+                            },
+                            {
+                                "left": "Guten Morgen",
+                                "right": "Good Morning"
+                            },
+                            {
+                                "left": "Gute Nacht",
+                                "right": "Good Night"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Listening Example",
+            "order": 5,
+            "content": {
+                "exercises": [
+                    {
+                        "id": "e4eebc99-9c0b-4ef8-bb6d-6bb9bd380a15",
+                        "type": "listening",
+                        "prompt": "Listen and type what you hear",
+                        "audioUrl": "https://example.com/audio/hello.mp3",
+                        "correctTranscript": "Guten Tag, wie geht es Ihnen?"
+                    }
+                ]
+            }
+        }
+    ]
+}

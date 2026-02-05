@@ -149,7 +149,7 @@ export const ListeningSchema = BaseExerciseSchema.extend({
 // 3. THE MASTER UNION
 // =============================================================================
 
-export const ExerciseSchema = z.discriminatedUnion('type', [
+export const ExerciseSchema = z.union([
   MultipleChoiceSchema,
   WordBankSchema,
   TypingSchema,
@@ -181,6 +181,8 @@ export type ExerciseType = z.infer<typeof ExerciseTypeEnum>
 export type MultipleChoice = z.infer<typeof MultipleChoiceSchema>
 export type WordBank = z.infer<typeof WordBankSchema>
 export type Typing = z.infer<typeof TypingSchema>
+export type MatchPairs = z.infer<typeof MatchPairsSchema>
+export type Listening = z.infer<typeof ListeningSchema>
 export type Exercise = z.infer<typeof ExerciseSchema>
 export type LessonContent = z.infer<typeof LessonContentSchema>
 
@@ -229,3 +231,31 @@ export interface UserProgress {
   completed_at: string | null
   updated_at: string
 }
+
+// =============================================================================
+// 7. FILE SYSTEM SCHEMAS (For Seeding)
+// =============================================================================
+
+/**
+ * The structure of a "Lesson" inside the JSON file.
+ * It combines the DB metadata (title, order) with the content.
+ */
+export const LessonFileSchema = z.object({
+  title: z.string().min(1, 'Lesson title is required'),
+  order: z.number().int().min(1, 'Lesson order must be >= 1'),
+  content: LessonContentSchema,
+})
+
+/**
+ * The structure of a "Unit" content file (e.g. content/units/01_basics.json).
+ */
+export const UnitFileSchema = z.object({
+  _$schema: z.string().optional(), // For JSON Schema binding
+  id: z.string().uuid().optional(), // Optional: If you want to force a specific UUID
+  title: z.string().min(1, 'Unit title is required'),
+  description: z.string().optional(),
+  order: z.number().int().min(1, 'Unit order must be >= 1'),
+  lessons: z.array(LessonFileSchema).min(1, 'A unit must have at least one lesson'),
+})
+
+export type UnitFile = z.infer<typeof UnitFileSchema>

@@ -17,6 +17,8 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         glass:
           'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white', // Glass variant
+        outline:
+          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
       },
@@ -36,8 +38,8 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends
-    Omit<HTMLMotionProps<'button'>, 'ref'>,
-    VariantProps<typeof buttonVariants> {
+  Omit<HTMLMotionProps<'button'>, 'ref'>,
+  VariantProps<typeof buttonVariants> {
   isLoading?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode

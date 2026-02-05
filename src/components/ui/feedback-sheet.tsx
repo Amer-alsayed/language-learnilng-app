@@ -1,10 +1,8 @@
-'use client'
-
-import * as React from 'react'
 import { Drawer } from 'vaul'
 import { Check, X, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 interface FeedbackSheetProps {
   isOpen: boolean
@@ -17,90 +15,95 @@ interface FeedbackSheetProps {
 
 export function FeedbackSheet({
   isOpen,
-  isCorrect,
+  isCorrect: initialIsCorrect,
   correctAnswer,
   explanation,
   onNext,
   onOpenChange,
 }: FeedbackSheetProps) {
+  // Freezing the state to prevent "Red Flash" on exit
+  const [frozenState, setFrozenState] = useState({ isCorrect: initialIsCorrect, correctAnswer })
+
+  useEffect(() => {
+    if (isOpen) {
+      setFrozenState({ isCorrect: initialIsCorrect, correctAnswer })
+    }
+  }, [isOpen, initialIsCorrect, correctAnswer])
+
+  // Use frozen state if closing, otherwise active state usually matches
+  // But strictly, we should just use frozen state whenever isOpen was true recently
+  const activeIsCorrect = isOpen ? initialIsCorrect : frozenState.isCorrect
+  const activeCorrectAnswer = isOpen ? correctAnswer : frozenState.correctAnswer
+
   return (
     <Drawer.Root
       open={isOpen}
       onOpenChange={onOpenChange}
-      shouldScaleBackground
+      shouldScaleBackground={false}
+      // disable scaling to prevent background shifts that might reveal white lines
+      modal={false}
+    // Non-modal to allow interaction? actually modal is fine, but maybe 'false' removes the overlay issue?
+    // Let's keep modal true (default) but remove the overlay?
+    // User complaint: "white line at the bottom". 
+    // Drawer content usually sits at bottom.
     >
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm" />
-        <Drawer.Content className="fixed right-0 bottom-0 left-0 z-50 mt-24 flex h-auto flex-col rounded-t-[20px] bg-white outline-none focus:outline-none">
+        <Drawer.Overlay className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px]" />
+        <Drawer.Content className="fixed right-0 bottom-0 left-0 z-50 flex flex-col outline-none focus:outline-none">
+          {/* 
+               We put the color on the main wrapper. 
+               Added pb-safe to handle iPhone home bar.
+            */}
           <div
             className={cn(
-              'space-y-6 rounded-t-[20px] p-6',
-              isCorrect ? 'bg-green-50' : 'bg-red-50' // Fallback to standard tailwind colors if custom tokens fail, using mix
+              'w-full p-6 pb-12 rounded-t-[32px] shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] transition-colors duration-300',
+              activeIsCorrect ? 'bg-green-100' : 'bg-red-100'
             )}
           >
-            <div
-              className={cn(
-                'bg-opacity-10 absolute inset-0 z-0',
-                isCorrect ? 'bg-feedback-success' : 'bg-feedback-error'
-              )}
-            />
+            <div className="mx-auto w-full max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
 
-            <div className="relative z-10 mx-auto w-full max-w-md space-y-6">
-              <Drawer.Title
+              {/* Header Section */}
+              <div className="flex items-center gap-4">
+                <div className={cn(
+                  "flex items-center justify-center w-12 h-12 rounded-full shadow-sm",
+                  activeIsCorrect ? "bg-green-500 text-white" : "bg-red-500 text-white"
+                )}>
+                  {activeIsCorrect ? <Check size={28} strokeWidth={3} /> : <X size={28} strokeWidth={3} />}
+                </div>
+                <div className="flex flex-col">
+                  <Drawer.Title className={cn(
+                    "text-2xl font-black tracking-tight",
+                    activeIsCorrect ? "text-green-800" : "text-red-800"
+                  )}>
+                    {activeIsCorrect ? "Excellent!" : "Incorrect"}
+                  </Drawer.Title>
+                  {/* Show correct answer if wrong */}
+                  {!activeIsCorrect && activeCorrectAnswer && (
+                    <p className="text-red-600 font-medium mt-1">
+                      Correct answer: <span className="font-bold">{activeCorrectAnswer}</span>
+                    </p>
+                  )}
+                  {/* Explanation */}
+                  {explanation && (
+                    <p className={cn("text-base mt-1", activeIsCorrect ? "text-green-700" : "text-red-700")}>
+                      {explanation}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Continue Button */}
+              <Button
+                onClick={onNext}
                 className={cn(
-                  'font-heading flex items-center gap-3 text-2xl font-bold',
-                  isCorrect ? 'text-feedback-success' : 'text-feedback-error'
+                  "w-full sm:w-auto px-8 h-14 text-lg font-bold shadow-lg transition-transform hover:scale-105 active:scale-95",
+                  activeIsCorrect
+                    ? "bg-green-500 hover:bg-green-600 text-white shadow-green-200"
+                    : "bg-red-500 hover:bg-red-600 text-white shadow-red-200"
                 )}
               >
-                {isCorrect ? (
-                  <>
-                    <div className="bg-feedback-success rounded-full p-2 text-white">
-                      <Check className="h-6 w-6" />
-                    </div>{' '}
-                    Excellent!
-                  </>
-                ) : (
-                  <>
-                    <div className="bg-feedback-error rounded-full p-2 text-white">
-                      <X className="h-6 w-6" />
-                    </div>{' '}
-                    Incorrect
-                  </>
-                )}
-              </Drawer.Title>
-
-              <div className="space-y-4">
-                {!isCorrect && correctAnswer && (
-                  <div className="rounded-xl border border-red-100/50 bg-white/60 p-4 backdrop-blur-sm">
-                    <p className="mb-1 text-xs font-bold tracking-wider text-red-400 uppercase">
-                      Correct Answer
-                    </p>
-                    <p className="text-foreground text-lg font-bold">
-                      {correctAnswer}
-                    </p>
-                  </div>
-                )}
-
-                {explanation && (
-                  <div className="text-muted-foreground text-base leading-relaxed">
-                    {explanation}
-                  </div>
-                )}
-
-                <Button
-                  className={cn(
-                    'h-14 w-full text-lg font-bold shadow-lg shadow-black/5 transition-transform active:scale-[0.98]',
-                    isCorrect
-                      ? 'bg-feedback-success hover:bg-feedback-success/90 text-white'
-                      : 'bg-feedback-error hover:bg-feedback-error/90 text-white'
-                  )}
-                  onClick={onNext}
-                  rightIcon={<ArrowRight className="h-5 w-5" />}
-                  autoFocus
-                >
-                  Continue
-                </Button>
-              </div>
+                Continue
+              </Button>
             </div>
           </div>
         </Drawer.Content>

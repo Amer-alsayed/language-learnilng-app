@@ -7,7 +7,7 @@
   --color-gender-neut: #22c55e;
 
   /* Feedback Colors */
-  --color-feedback-success: #22c55e;
+  --color-feedback-success: #10b981;
   --color-feedback-error: #ef4444;
   --color-feedback-warning: #f59e0b;
 
@@ -15,40 +15,47 @@
   --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Standard UI Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: #0f172a;
-  --color-primary-foreground: #f8fafc;
+  /* Standard UI Colors (Dark Mode Default) */
+  --color-background: #030712;
+  /* Gray 950+ */
+  --color-foreground: #f8fafc;
 
-  --color-secondary: #f1f5f9;
-  --color-secondary-foreground: #0f172a;
+  --color-primary: #6d28d9;
+  /* Deep Purple */
+  --color-primary-foreground: #ffffff;
+  --color-primary-glow: #8b5cf6;
 
-  --color-accent: #f1f5f9;
-  --color-accent-foreground: #0f172a;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f8fafc;
 
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #f8fafc;
+  --color-accent: #3b82f6;
+  /* Blue */
+  --color-accent-foreground: #ffffff;
+  --color-accent-glow: #60a5fa;
 
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
+  --color-destructive: #991b1b;
+  --color-destructive-foreground: #ffffff;
 
-  --color-ring: #0f172a;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+
+  --color-ring: #7c3aed;
 
   /* Components */
-  --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
+  --color-card: #0f172a;
+  --color-card-foreground: #f8fafc;
 
-  --color-popover: #ffffff;
-  --color-popover-foreground: #0f172a;
-
-  --color-border: #e2e8f0;
-  --color-input: #e2e8f0;
+  --color-input: #1e293b;
+  --color-border: #334155;
 
   /* Animations */
   --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
 
   @keyframes shake {
+
     10%,
     90% {
       transform: translate3d(-1px, 0, 0);
@@ -70,26 +77,89 @@
       transform: translate3d(4px, 0, 0);
     }
   }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      opacity: 0.5;
+      filter: blur(20px);
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.8;
+      filter: blur(25px);
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 /* Base Styles */
 :root {
-  --background: #f8fafc;
-  /* Slate-50 */
-  --foreground: #0f172a;
-  /* Slate-900 */
+  --background: #030712;
+  --foreground: #f8fafc;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
-  /* "Zen" Anti-aliasing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Glassmorphism Utility Class */
+/* Glassmorphism Utility Classes */
 .glass-panel {
-  @apply border border-white/20 bg-white/70 shadow-md backdrop-blur-lg;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-button {
+  background: rgba(124, 58, 237, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(139, 92, 246, 0.9);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+  transform: translateY(-2px);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at top left, #1e1b4b, #020617);
 }

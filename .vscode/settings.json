@@ -1,0 +1,12 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "content/units/*.json"
+            ],
+            "url": "./content/schema.json"
+        }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+}
