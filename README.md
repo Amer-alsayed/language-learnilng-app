@@ -32,7 +32,7 @@
 
 ### 🔑 **Try it now!**
 
-**Email**: `demo@german-mastery.student` &nbsp;&nbsp;|&nbsp;&nbsp; **Password**: `demo`
+&nbsp;&nbsp; **Password**: `demo`
 
 </div>
 
