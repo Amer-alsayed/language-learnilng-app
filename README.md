@@ -1,4 +1,4 @@
-﻿# 🇩🇪 German Mastery: Visualize Your Path to Fluency
+﻿# 🇩🇪 German Mastery: A Universal Learning Engine
 
 <p align="center">
   <img src="public/screenshots/banner.png" alt="Project Banner" width="100%">
@@ -28,25 +28,28 @@
 
 ## 🚀 Overview
 
-**German Mastery** is a next-generation language learning platform designed to make mastering German engaging, interactive, and visually stunning. Built with a focus on user experience, it combines gamification principles with a robust curriculum to keep users motivated.
+**German Mastery** is a next-generation learning platform designed to make mastering any subject engaging, interactive, and visually stunning. While currently configured for German, the underlying engine is **completely content-agnostic**, making it the perfect foundation for any language, science, or trivia learning application.
 
-Unlike traditional learning apps, German Mastery focuses on:
+Built with a focus on user experience, it combines gamification principles with a robust curriculum structure to keep users motivated.
 
+Unlike traditional learning apps, this engine focuses on:
+
+- **Universal Applicability**: Easily adaptable for Spanish, French, Coding, History, or any other subject.
 - **Immediate Feedback**: Real-time validation of answers with satisfying micro-interactions.
 - **Visual Progression**: A dynamic "Candy Land" style map that visualizes the learning journey.
-- **Immersion**: Native audio pronunciation and context-rich exercises.
+- **Immersion**: Native audio pronunciation support and context-rich exercises.
 - **Accessibility**: A responsive, PWA-enabled design that works seamlessly across all devices.
 
 ## ✨ Key Features
 
-### 🎮 Interactive Game Engine
+### 🎮 Content-Agnostic Game Engine
 
-At the core of the application is a custom-built game engine that supports various exercise types:
+At the core of the application is a flexible game engine that supports various exercise types for any data set:
 
-- **Multiple Choice**: Fast-paced vocabulary recognition.
-- **Listen & Select**: Audio-focused challenges to improve listening comprehension.
-- **Sentence Building**: Drag-and-drop or tap-to-order sentence construction.
-- **Fill in the Blanks**: Contextual grammar practice.
+- **Multiple Choice**: Fast-paced vocabulary or fact recognition.
+- **Listen & Select**: Audio-focused challenges (great for languages or music).
+- **Sentence Building**: Drag-and-drop sequencing (ideal for grammar or logic).
+- **Fill in the Blanks**: Contextual practice.
 
 ### 🗺️ Visual Learning Path
 
@@ -64,7 +67,7 @@ A comprehensive admin interface allowing content creators to:
 
 - Manage courses, units, and lessons.
 - Create and edit exercises with a WYSIWYG-like experience.
-- Track user statistics and engagement metrics.
+- **Import/Export Content**: Easily swap out the German content for any other subject matter.
 
 ## 🛠️ Technology Stack
 
@@ -83,14 +86,32 @@ This project leverages the latest in modern web development to deliver a high-pe
 
 ## 📸 Gallery
 
-<p align="center">
-  <img src="public/screenshots/image-1.png" alt="Lesson Interface" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="public/screenshots/image-2.png" alt="Correct Answer" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-</p>
-<p align="center">
-  <img src="public/screenshots/image-3.png" alt="Lesson Map" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="public/screenshots/image-4.png" alt="Success Screen" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-</p>
+<table align="center">
+  <tr>
+    <td align="center" width="50%">
+      <img src="public/screenshots/image-1.png" alt="Lesson Interface" width="100%" style="border-radius: 10px;">
+      <br>
+      <em>Interactive Lessons</em>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/screenshots/image-2.png" alt="Correct Answer" width="100%" style="border-radius: 10px;">
+      <br>
+      <em>Instant Feedback</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="public/screenshots/image-3.png" alt="Lesson Map" width="100%" style="border-radius: 10px;">
+      <br>
+      <em>Visual Roadmap</em>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/screenshots/image-4.png" alt="Success Screen" width="100%" style="border-radius: 10px;">
+      <br>
+      <em>Gamified Rewards</em>
+    </td>
+  </tr>
+</table>
 
 > <p align="center"><em>Images showcase the vibrant UI and interactive elements of the learning experience.</em></p>
 
