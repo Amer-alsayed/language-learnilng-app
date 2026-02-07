@@ -139,7 +139,7 @@ This project leverages the latest in modern web development to deliver a high-pe
 1.  **Clone the repository**
 
     ```bash
-    git clone https://github.com/Amer-alsayed/Learn-German.git
+    git clone https://github.com/Amer-alsayed/language-learning-app.git
     cd german-mastery
     ```
 
