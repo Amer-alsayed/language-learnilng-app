@@ -1,14 +1,30 @@
 ﻿# 🇩🇪 German Mastery: Visualize Your Path to Fluency
 
-![Project Banner](public/screenshots/banner.png)
+<p align="center">
+  <img src="public/screenshots/banner.png" alt="Project Banner" width="100%">
+</p>
 
-> _Note: Place a banner image at `public/screenshots/banner.png`_
+<p align="center">
+  <em>Note: Place a banner image at <code>public/screenshots/banner.png</code></em>
+</p>
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.1-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Supabase](https://img.shields.io/badge/Supabase-Auth_&_DB-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com/)
-[![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge&logo=pwa)](https://web.dev/progressive-web-apps/)
+<p align="center">
+  <a href="https://nextjs.org/">
+    <img src="https://img.shields.io/badge/Next.js-16.1-black?style=for-the-badge&logo=next.js" alt="Next.js">
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript">
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS">
+  </a>
+  <a href="https://supabase.com/">
+    <img src="https://img.shields.io/badge/Supabase-Auth_&_DB-3ECF8E?style=for-the-badge&logo=supabase" alt="Supabase">
+  </a>
+  <a href="https://web.dev/progressive-web-apps/">
+    <img src="https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge&logo=pwa" alt="PWA Ready">
+  </a>
+</p>
 
 ## 🚀 Overview
 
@@ -67,14 +83,16 @@ This project leverages the latest in modern web development to deliver a high-pe
 
 ## 📸 Gallery
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-  <img src="public/screenshots/image-1.png" alt="Lesson Interface - Picking the correct word" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="public/screenshots/image-2.png" alt="Lesson Interface - Correct Answer Feedback" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="public/screenshots/image-3.png" alt="Lesson Map - Learning Journey" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="public/screenshots/image-4.png" alt="Lesson Completed - Success Screen" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-</div>
+<p align="center">
+  <img src="public/screenshots/image-1.png" alt="Lesson Interface" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-2.png" alt="Correct Answer" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+</p>
+<p align="center">
+  <img src="public/screenshots/image-3.png" alt="Lesson Map" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-4.png" alt="Success Screen" width="45%" style="border-radius: 10px; margin: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+</p>
 
-> _Images showcase the vibrant UI and interactive elements of the learning experience._
+> <p align="center"><em>Images showcase the vibrant UI and interactive elements of the learning experience.</em></p>
 
 ## 🏁 Getting Started
 
@@ -88,7 +106,7 @@ This project leverages the latest in modern web development to deliver a high-pe
 1.  **Clone the repository**
 
     ```bash
-    git clone https://github.com/your-username/german-mastery.git
+    git clone https://github.com/Amer-alsayed/Learn-German.git
     cd german-mastery
     ```
 
@@ -128,4 +146,6 @@ Contributions make the open-source community an amazing place to learn, inspire,
 
 ---
 
-Made with ❤️ by [Your Name]
+<p align="center">
+  Made with ❤️ by [Amer Alsayed]
+</p>
