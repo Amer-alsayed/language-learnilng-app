@@ -180,5 +180,5 @@ Contributions make the open-source community an amazing place to learn, inspire,
 ---
 
 <p align="center">
-  Made with ❤️ by [Amer Alsayed]
+  Made with ❤️ by Amer Alsayed
 </p>
