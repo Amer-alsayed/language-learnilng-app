@@ -1,6 +1,6 @@
 ﻿# 🇩🇪 German Mastery: Visualize Your Path to Fluency
 
-![Project Banner](/public/screenshots/banner.png)
+![Project Banner](public/screenshots/banner.png)
 
 > _Note: Place a banner image at `public/screenshots/banner.png`_
 
@@ -68,10 +68,10 @@ This project leverages the latest in modern web development to deliver a high-pe
 ## 📸 Gallery
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-  <img src="/public/screenshots/image-1.png" alt="Lesson Interface - Picking the correct word" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="/public/screenshots/image-2.png" alt="Lesson Interface - Correct Answer Feedback" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="/public/screenshots/image-3.png" alt="Lesson Map - Learning Journey" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-  <img src="/public/screenshots/image-4.png" alt="Lesson Completed - Success Screen" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-1.png" alt="Lesson Interface - Picking the correct word" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-2.png" alt="Lesson Interface - Correct Answer Feedback" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-3.png" alt="Lesson Map - Learning Journey" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+  <img src="public/screenshots/image-4.png" alt="Lesson Completed - Success Screen" style="border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
 </div>
 
 > _Images showcase the vibrant UI and interactive elements of the learning experience._
