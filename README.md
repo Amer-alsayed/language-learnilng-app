@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <em>Note: Place a banner image at <code>public/screenshots/banner.png</code></em>
+  <em></code></em>
 </p>
 
 <p align="center">
