@@ -26,6 +26,18 @@
   </a>
 </p>
 
+---
+
+<div align="center">
+
+### 🔑 **Try it now!**
+
+**Email**: `demo@german-mastery.student` &nbsp;&nbsp;|&nbsp;&nbsp; **Password**: `demo`
+
+</div>
+
+---
+
 ## 🚀 Overview
 
 **German Mastery** is a next-generation learning platform designed to make mastering any subject engaging, interactive, and visually stunning. While currently configured for German, the underlying engine is **completely content-agnostic**, making it the perfect foundation for any language, science, or trivia learning application.
@@ -50,15 +62,6 @@ At the core of the application is a flexible game engine that supports various e
 - **Listen & Select**: Audio-focused challenges (great for languages or music).
 - **Sentence Building**: Drag-and-drop sequencing (ideal for grammar or logic).
 - **Fill in the Blanks**: Contextual practice.
-
-### 🔑 Demo Access
-
-Want to try it out? You can log in with this test account:
-
-- **Email**: `demo@german-mastery.student`
-- **Password**: `demo`
-
-> **Note**: This is a public test environment. Data may be reset periodically.
 
 ### 🗺️ Visual Learning Path
 
